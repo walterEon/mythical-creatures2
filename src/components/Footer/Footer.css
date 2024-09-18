@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* General footer layout */
+.footer {
+  background-color: #59402f;
+  padding: 30px;
+  padding-bottom: 30px;
+  border-top: 1px solid #ddd;
+  font-family: 'Nunito', sans-serif;
+  
+}
+
+/* Footer bottom */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos a lo largo del contenedor */
+  align-items: center;
+  font-size: 14px;
+  color: white;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+/* Individual paragraph styles */
+.footer-bottom p {
+  margin: 5px 0;
+  flex: 1; /* Hace que los párrafos ocupen espacio equitativo */
+  text-align: center; /* Centra el texto de cada párrafo */
+}
+
+/* Específicos para la alineación */
+.footer-bottom p:first-child {
+  text-align: left; /* El primer párrafo alineado a la izquierda */
+}
+
+.footer-bottom p:last-child {
+  text-align: right; /* El último párrafo alineado a la derecha */
+}
+
+  

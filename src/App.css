@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+
+/* Fondo de las páginas */
+body {
+  background-color: #fafafa; /* Puedes cambiarlo por alguno de los otros códigos sugeridos */
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+

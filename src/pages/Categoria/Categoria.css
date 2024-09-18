@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+.categoria-page{
+    font-family: 'Nunito', sans-serif;
+}
+
+.categoria-page {
+    font-family: 'Nunito', sans-serif;
+    padding: 20px;
+}
+
+.categoria-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}

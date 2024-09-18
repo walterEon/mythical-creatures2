@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+.home-page{
+    text-align: center;
+}
+
+.home-page h2{
+    font-weight: bold;
+    font-size: 40px;
+    color: #59402f;
+    font-family:'Nunito', sans-serif;
+}

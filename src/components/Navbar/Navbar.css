@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* Estilos para la barra de navegación */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #59402f; 
+  padding: 0px 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.navbar-logo img {
+  height: 80px;
+  width: auto;
+  margin: 0;
+}
+
+/* Barra de búsqueda */
+.navbar-search {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 1000px;
+  margin: 0 20px;
+}
+
+.navbar-search input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 3px solid #fef4b1; /* Bordes crema */
+  border-radius: 20px 20px 20px 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+.navbar-search button {
+  background-color: #d1bfa4; /* Color crema más oscuro */
+  border: none;
+  border-radius: 0 20px 20px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.navbar-search button svg {
+  color: #fff;
+  font-size: 18px;
+}
+
+/* Pestañas a la derecha */
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  color: #fef4b1;
+  text-decoration: none;
+  position: relative; /* Agregar para que el popup se posicione relativo a este elemento */
+  cursor: pointer;
+}
+
+.navbar-icon svg {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.navbar-icon span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar-icon:hover {
+  color: #d6ad42; /* Color crema más oscuro al pasar el mouse */
+}
+
+/* Contenedor del popup (nube) */
+.popup {
+  position: absolute; /* Cambio a absolute para que se posicione relativo al icono */
+  top: 60px; /* Espacio desde el icono */
+  right: 15px; /* Ajusta para que se alinee con el borde derecho del icono */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle efecto de nube */
+  width: 300px;
+  z-index: 100; /* Aseguramos que esté sobre otros elementos */
+}
+
+.popup::before {
+  content: '';
+  position: absolute;
+  top: -10px; /* Posiciona la punta de la nube */
+  right: 20px; /* Ajusta la posición para que la punta esté alineada con el icono */
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent white transparent; /* Punta de la nube en blanco */
+}
+
+.popup-content {
+  text-align: center;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-content h5{
+  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+}
+
+.popup-content p{
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+}
+
+.popup-content form input {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 12px;
+  font-family:'Nunito', sans-serif;
+  border-radius: 10px;
+  border: 2px solid gray;
+}
+
+.terminos {
+  display: flex;
+  align-items: center; /* Alinea el texto y el checkbox en la misma línea */
+  font-size: 11px;
+  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+  margin: 10px 0;
+}
+
+.terminos a {
+  color: #f44336; /* Cambia el color del enlace */
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  margin-left: 2px; /* Espacio entre el texto y el enlace */
+}
+
+.terminos a:hover {
+  text-decoration: underline; /* Añade subrayado al pasar el mouse por encima */
+}
+
+.terminos input {
+  margin-right: 100px; /* Añade espacio entre el checkbox y el texto */
+}
+
+.popup-content button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: auto;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+}
+
+.popup-content button:hover {
+  background-color: #d32f2f;
+}
+
+/* Sombreado del fondo cuando el carrito está abierto */
+.cart-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Sombrea el fondo */
+  display: flex;
+  justify-content: flex-end; /* Alinea el popup al lado derecho */
+  z-index: 1000; /* Para que esté sobre el contenido de la página */
+}
+
+/* Estilos del popup del carrito */
+.cart-popup {
+  background-color: white;
+  width: 390px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-items {
+  margin-top: 20px;
+}
+
+.cart-item {
+  display: flex; /* Align items in a row */
+  align-items: center; /* Align items vertically */
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-item img {
+  width: 80px; /* Adjust image width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 15px;
+}
+
+.item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.item-quantity button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.item-quantity span {
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.view-cart-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.convert-list-btn {
+  background-color: #d1bfa4; /* Color crema */
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.view-cart-btn:hover {
+  background-color: #d32f2f;
+}
+
+.convert-list-btn:hover {
+  background-color: #d6ad42;
+}
+
+
+/* Estilos responsivos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .navbar-search {
+    max-width: 400px;
+  }
+
+  .navbar-icon span {
+    display: none; /* Solo mostrar íconos en pantallas pequeñas */
+  }
+
+  .navbar-icon svg {
+    font-size: 24px; /* Hacer los íconos más grandes en pantallas pequeñas */
+  }
+}
