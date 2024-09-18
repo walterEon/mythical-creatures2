@@ -3,12 +3,19 @@ import logo from './mythical_gourmet_nb.png';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import hierba from '../../pages/Categoria/hierba.jpg';
 import manzanas from '../../pages/Categoria/manzanas.jpg';
 
 function Navbar() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+        navigate('/perfil');
+    }
+
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -93,7 +100,7 @@ function Navbar() {
         <div className="popup">
           <div className="popup-content">
             <h5>Iniciar sesión</h5>
-            <form>
+            <form onSubmit={handleSubmit}>
               <input type="email" placeholder="Ej.: ejemplo@mail.com" required />
               <input type="password" placeholder="Contraseña" required />
               <div className="terminos">
