@@ -2,14 +2,13 @@ import './Navbar.css';
 import logo from './mythical_gourmet_nb.png';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import hierba from '../../pages/Categoria/hierba.jpg';
 import manzanas from '../../pages/Categoria/manzanas.jpg';
 
 function Navbar() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const cartPopupRef = useRef(null);
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -17,13 +16,6 @@ function Navbar() {
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
-    if (cartPopupRef.current) {
-      if (isCartOpen) {
-        cartPopupRef.current.style.transform = 'translateX(0)';
-      } else {
-        cartPopupRef.current.style.transform = 'translateX(100%)';
-      }
-    }
   };
 
   return (
@@ -55,7 +47,7 @@ function Navbar() {
       {/* Popup del carrito */}
       {isCartOpen && (
         <div className="cart-popup-overlay">
-          <div ref={cartPopupRef} className="cart-popup" style={{ transform: isCartOpen ? 'translateX(0)' : 'translateX(100%)' }}>
+          <div className="cart-popup">
             <button className="close-btn" onClick={toggleCart}>×</button>
             <h3>Carrito</h3>
             <div className="cart-items">

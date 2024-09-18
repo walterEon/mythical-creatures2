@@ -8,4 +8,18 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+.page-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Set the minimum height to the viewport height */
+}
+
+.main-content {
+  flex-grow: 1; /* Take up the remaining space */
+}
+
+.footer {
+  margin-top: auto; /* Stick to the bottom */
+}
+
 

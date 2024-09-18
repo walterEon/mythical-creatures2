@@ -11,15 +11,18 @@ function App() {
     <>
       <Navbar />  
       <div className="page-content">
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/categoria/:id' element={<Categoria />} />
-        </Routes>
+        <div className="main-content">
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/categoria/:id' element={<Categoria />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
 
       {/* Botón de accesibilidad */}
       <AccessibilityButton />
-      <Footer />
+      
     </>
   );
 }
