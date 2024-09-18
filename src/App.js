@@ -1,6 +1,7 @@
 import { Routes, Route} from 'react-router-dom';
 import Home from './pages/Home/Home.js';
 import Perfil from './pages/Perfil/Perfil.js';
+import Carrito from './pages/Carrito/Carrito.js';
 import Navbar from './components/Navbar/Navbar.js';
 import Categoria from './pages/Categoria/Categoria.js';
 import AccessibilityButton from './components/AccessibilityButton/AccessibilityButton.js';
@@ -17,6 +18,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/categoria/:id' element={<Categoria />} />
             <Route path='/perfil' element={<Perfil />} />
+            <Route path='/carrito' element={<Carrito />} />
           </Routes>
         </div>
         <Footer />
