@@ -16,6 +16,10 @@ function Navbar() {
         navigate('/perfil');
     }
 
+   const handleVerCarrito = () => {
+        navigate('/carrito');
+    }
+
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -90,7 +94,7 @@ function Navbar() {
               <p>Costo de entrega: GRATIS</p>
               <h4>Total: S/ 150</h4>
             </div>
-            <button className="view-cart-btn">Ver Carrito</button>
+            <button className="view-cart-btn" onClick={handleVerCarrito}>Ver Carrito</button>
           </div>
         </div>
       )}
