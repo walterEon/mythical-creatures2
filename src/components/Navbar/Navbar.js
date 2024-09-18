@@ -100,7 +100,6 @@ function Navbar() {
           </div>
         </div>
       )}
-
       {/* Popup para el perfil */}
       {isPopupOpen && (
         <div className="popup">
