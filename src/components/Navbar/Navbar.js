@@ -16,7 +16,8 @@ function Navbar() {
         navigate('/perfil');
     }
 
-   const handleVerCarrito = () => {
+   const handleVerCarrito = () => 
+        setIsCartOpen(false);
         navigate('/carrito');
     }
 
@@ -27,6 +28,7 @@ function Navbar() {
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
+    
   };
 
   return (
