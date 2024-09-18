@@ -44,6 +44,16 @@ body.contrast-high h5{
   color: black;
 }
 
+body.contrast-high p{
+   
+  color: black;
+} 
+
+body.contrast-high input{
+   
+  color: black;
+}
+
 /* Bajo contraste */
 body.contrast-low {
   background-color: #f0f0f0;
