@@ -84,7 +84,6 @@ function Navbar() {
               <h4>Total: S/ 150</h4>
             </div>
             <button className="view-cart-btn">Ver Carrito</button>
-            <button className="convert-list-btn">Convertir en lista</button>
           </div>
         </div>
       )}
