@@ -22,4 +22,38 @@ body {
   margin-top: auto; /* Stick to the bottom */
 }
 
+/* Estilos normales (por defecto) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Alto contraste */
+body.contrast-high {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.contrast-high h5{
+   
+  color: black;
+}
+
+body.contrast-high h5{
+  
+  color: black;
+}
+
+/* Bajo contraste */
+body.contrast-low {
+  background-color: #f0f0f0;
+  color: #606060;
+}
+
+/* Asegúrate de que los enlaces también cambien de color */
+.contrast-high a { color: #00ffff; }
+.contrast-low a { color: #0000ff; }
+
+/* Puedes agregar más selectores según sea necesario para otros elementos */
+
 

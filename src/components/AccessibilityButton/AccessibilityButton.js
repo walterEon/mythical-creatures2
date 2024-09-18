@@ -1,13 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUniversalAccess } from 'react-icons/fa';
 import './AccessibilityButton.css';
 
 function AccessibilityButton() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [contrast, setContrast] = useState('normal');
+
   const adjustTextSize = (e) => {
+    document.documentElement.style.fontSize = `${e.target.value}px`;
     document.body.style.fontSize = `${e.target.value}px`;
   };
+
+  const toggleContrast = () => {
+    setContrast(prevContrast => {
+      switch(prevContrast) {
+        case 'normal':
+          return 'high';
+        case 'high':
+          return 'low';
+        case 'low':
+          return 'normal';
+        default:
+          return 'normal';
+      }
+    });
+  };
+
+  useEffect(() => {
+    document.body.className = `contrast-${contrast}`;
+  }, [contrast]);
   
 
   const toggleMenu = () => {
@@ -27,6 +49,7 @@ function AccessibilityButton() {
             <button className="close-menu" onClick={toggleMenu}>✖</button>
           </div>
           <div className="accessibility-options">
+            <h5>Enfoque a discapacidades visuales</h5>
             {/* <div className="accessibility-option">
               <span>Perfil a prueba de convulsiones</span>
               <button>Activar</button>
@@ -55,7 +78,20 @@ function AccessibilityButton() {
               <span>Ajustar tamaño del texto</span>
               <input type="range" min="14" max="30" defaultValue="16" onChange={adjustTextSize} />
             </div>
+
+            <div className="accessibility-option">
+              <span>Ajustar contraste</span>
+              <button onClick={toggleContrast}>
+                {contrast === 'normal' ? 'Normal' : contrast === 'high' ? 'Alto' : 'Bajo'}
+              </button>
+            </div>
           </div>
+
+          <div className="accessibility-options">
+            <h5>Enfoque a discapacidades auditivas</h5>
+            
+          </div>
+
         </div>
       )}
     </div>
