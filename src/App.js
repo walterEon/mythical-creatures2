@@ -1,6 +1,7 @@
 import { Routes, Route} from 'react-router-dom';
 import Home from './pages/Home/Home.js';
 import Perfil from './pages/Perfil/Perfil.js';
+import Registro from './pages/Registro/Registro.js';
 import Carrito from './pages/Carrito/Carrito.js';
 import Navbar from './components/Navbar/Navbar.js';
 import Categoria from './pages/Categoria/Categoria.js';
@@ -20,6 +21,7 @@ function App() {
             <Route path='/categoria/:id' element={<Categoria />} />
             <Route path='/producto-info/:id' element={<ProductoInfo />} />
             <Route path='/perfil' element={<Perfil />} />
+            <Route path='/registro' element={<Registro />} />
             <Route path='/carrito' element={<Carrito />} />
           </Routes>
         </div>
