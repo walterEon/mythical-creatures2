@@ -16,6 +16,59 @@
     max-width: 900px;
     width: 100%;
   }
+
+  .producto-info-container-c {
+    display: flex;
+    background-color: #ffedcc;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin-left: 50px;
+    width: 25%;
+  }
+
+  .comentarios h3{
+    font-weight: 1000;
+  }
+  
+  .comentarios {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .comentario {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .comentario-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* Evita que la imagen cambie de tamaño */
+  }
+  
+  .comentario-box {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: 300px; /* Fija el ancho de la caja */
+    height: 80px; /* Fija la altura de la caja */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+  }
+  
+  .comentario-box p {
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Evita que el texto se extienda en múltiples líneas */
+  }
   
   .producto-image {
     width: 350px;

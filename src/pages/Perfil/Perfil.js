@@ -1,24 +1,14 @@
 import React, { useState } from 'react';
 import './Perfil.css';
+//import { useNavigate } from 'react-router-dom';
 
 function Perfil() {
   const [selectedSection, setSelectedSection] = useState('perfil'); // Estado inicial
 
-  const [showLogoutPopup, setShowLogoutPopup] = useState(false); // Control del popup
+  //const [showLogoutPopup, setShowLogoutPopup] = useState(false); // Control del popup
 
-  const handleLogout = () => {
-    setShowLogoutPopup(true); // Mostrar popup
-  };
+  //const navigate = useNavigate();
 
-  const confirmLogout = () => {
-    // Lógica para cerrar sesión
-    console.log("Sesión cerrada");
-    setShowLogoutPopup(false); // Cerrar popup
-  };
-
-  const cancelLogout = () => {
-    setShowLogoutPopup(false); // Cerrar popup sin cerrar sesión
-  };
 
   const renderContent = () => {
     switch (selectedSection) {
@@ -110,7 +100,6 @@ function Perfil() {
           <li className={selectedSection === 'perfil' ? 'active' : ''}  onClick={() => setSelectedSection('perfil')}>Mi Perfil</li>
           <li className={selectedSection === 'pedidos' ? 'active' : ''}  onClick={() => setSelectedSection('pedidos')}>Mis Pedidos</li>
           <li className={selectedSection === 'contraseña' ? 'active' : ''}  onClick={() => setSelectedSection('contraseña')}>Cambiar Contraseña</li>
-          <li onClick={handleLogout} className="logout-button">Cerrar Sesión</li>
         </ul>
       </div>
 
@@ -119,16 +108,6 @@ function Perfil() {
         {renderContent()}
       </div>
 
-      {/* Popup de confirmación de cierre de sesión */}
-      {showLogoutPopup && (
-        <div className="logout-popup">
-          <div className="popup-content-p">
-            <p>¿Estás seguro de que quieres cerrar sesión?</p>
-            <button onClick={confirmLogout}>Sí</button>
-            <button onClick={cancelLogout}>No</button>
-          </div>
-        </div>
-      )}
     
       
 

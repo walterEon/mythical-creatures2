@@ -133,6 +133,7 @@ html, body {
   cursor: pointer;
   background-color: #59402f;
   color: white;
+  font-weight: bold;
 }
 
 .cambiarc-b:hover{

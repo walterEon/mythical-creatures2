@@ -1,0 +1,80 @@
+/* Estilo general de la página */
+.registro-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Título */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: #59402f;
+    border-radius: 15px;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos generales para las secciones del formulario */
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section label {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Contenedor del input y el ícono de micrófono */
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    background-color: #fefefe;
+    border: 3px solid #fef4b1;
+    border-radius: 10px;
+    height: 50px;
+    padding: 10px;
+}
+
+.input-with-icon input {
+    flex: 1;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 1rem;
+    color: black;
+}
+
+.input-with-icon .icono-microfono {
+    margin-left: 10px;
+    font-size: 1.5rem;
+    color: black;
+}
+
+/* Botón de envío */
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #da9147;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #93683d;
+    color: white;
+}

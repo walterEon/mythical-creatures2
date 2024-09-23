@@ -7,6 +7,7 @@ import piedras from '../Categoria/piedras.jpg';
 import hierba from '../Categoria/hierba.jpg';
 import nectar from '../Categoria/nectar.jpg';
 import raices from '../Categoria/raices.jpg';  
+import { FaRegUserCircle } from "react-icons/fa";
 
 const productosMitologicos = [
     {
@@ -132,6 +133,29 @@ function ProductoInfo() {
           </div>
         </div>
       </div>
+      <div className='producto-info-container-c'>
+      <div className='comentarios'>
+        <h3>Comentarios</h3>
+        {/* Ejemplo de comentarios con imagen de usuario */}
+        <div className='comentario'>
+          <FaRegUserCircle className='comentario-img'/>
+          <div className='comentario-box'>
+            <p><strong>Usuario 1</strong></p>
+            <p>¡Es excelente!</p>
+          </div>
+        </div>
+
+        <div className='comentario'>
+        <FaRegUserCircle className='comentario-img'/>
+          <div className='comentario-box'>
+            <p><strong>Usuario 2</strong></p>
+            <p>El producto tiene buena calidad.</p>
+          </div>
+        </div>
+
+        {/* Añadir más comentarios aquí */}
+      </div>
+    </div>
     </div>
   );
 }

@@ -1,13 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
-/* Estilos para la barra de navegación */
 .navbar {
+  position: fixed; /* Mantiene el navbar fijo en la parte superior */
+  top: 0; /* Asegura que esté en la parte superior de la ventana */
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Asegura que esté por encima del resto del contenido */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #59402f; 
+  background-color: #59402f;
   padding: 0px 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Agregar un margen superior al contenido para evitar que quede debajo del navbar */
+body {
+  padding-top: 80px; /* Ajusta este valor según la altura del navbar */
 }
 
 /* Logo */
@@ -40,6 +49,107 @@
   padding-left: 10px; /* Espacio entre el icono y el texto */
   font-size: 16px;
   outline: none;
+}
+
+.navbar-search {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: none;
+  border-top: none;
+  z-index: 1000;
+  padding: 10px;
+  display: flex;
+  font-weight: bold;
+  border-radius: 5px 5px 20px 20px;
+  box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-results{
+  border-right: 1px solid gray;
+  
+}
+
+.sugerencias{
+  border-bottom: 1px solid gray;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  padding-right: 10px;
+}
+
+.sugerencias h4{
+  font-weight: 1000;
+}
+
+.marcas-sugeridas{
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.marcas-sugeridas h4{
+  font-weight: 1000;
+}
+
+.resultados-busqueda{
+  padding: 10px;
+}
+
+.resultados-busqueda h4{
+  font-weight: 1000;
+}
+
+.resultados-items{
+  display: flex;
+}
+
+.img-producto{
+  cursor: pointer;
+}
+
+.search-result-item {
+  margin: 10px;
+  width: 300px;
+  height: 370px;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #f7f4f4;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item img {
+  width: 200px;
+  height: 200px;
+  margin-top: 10px;
+  
+}
+
+.agregar-btn, .ver-todos-btn {
+  background-color: #59402f;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.agregar-btn:hover, .ver-todos-btn:hover {
+  background-color: #896954;
+}
+
+.ver-todos-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .search-icon {
@@ -196,21 +306,26 @@
   margin-right: 100px; /* Añade espacio entre el checkbox y el texto */
 }
 
+.forgot-link:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .popup-content button {
-  background-color: #f44336;
+  background-color: #59402f;
   color: white;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   height: auto;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   font-family: 'Nunito', sans-serif;
 }
 
 .popup-content button:hover {
-  background-color: #d32f2f;
+  background-color: #896954;
 }
 
 /* Sombreado del fondo cuando el carrito está abierto */
@@ -300,12 +415,12 @@
   z-index: 1; /* Asegura que esté por encima de los items del carrito */
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2); /* Sombreado en la parte superior */
   box-sizing: border-box;
-  margin: 0;
   padding: 20px;
+  
 }
 
 .view-cart-btn {
-  background-color: #f44336;
+  background-color: #59402f;
   color: white;
   padding: 10px;
   border: none;
@@ -313,29 +428,13 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 14px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.convert-list-btn {
-  background-color: #d1bfa4; /* Color crema */
-  color: white;
-  padding: 10px;
-  border: none;
-  width: 100%;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .view-cart-btn:hover {
-  background-color: #d32f2f;
-}
-
-.convert-list-btn:hover {
-  background-color: #d6ad42;
+  background-color: #896954;
 }
 
 .delete-icon{

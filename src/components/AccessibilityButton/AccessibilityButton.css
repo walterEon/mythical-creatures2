@@ -1,27 +1,27 @@
 .accessibility-container {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   z-index: 1000;
 }
 
 .accessibility-btn {
-  background-color: #f5f5dc;
   border: none;
   border-radius: 50%;
+  background-color: white;
   padding: 10px;
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .accessibility-btn:hover {
-  background-color: #e0d3af;
+  background-color: none;
 }
 
 .accessibility-menu {
   position: fixed;
   bottom: 80px;
-  left: 20px;
+  right: 20px;
   width: 350px;
   background-color: #fff;
   border-radius: 10px;

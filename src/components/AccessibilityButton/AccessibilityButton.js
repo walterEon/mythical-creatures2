@@ -38,9 +38,8 @@ function AccessibilityButton() {
 
   return (
     <div className="accessibility-container">
-      <button className="accessibility-btn" onClick={toggleMenu}>
-        <FaUniversalAccess color='black' size={24} />
-      </button>
+      <FaUniversalAccess className="accessibility-btn" onClick={toggleMenu} color='brown' size={50} />
+      
 
       {isMenuOpen && (
         <div className="accessibility-menu">
