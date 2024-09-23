@@ -17,35 +17,34 @@
   margin: 0;
 }
 
-/* Barra de búsqueda */
+.navbar-logo img:hover {
+  cursor: pointer;
+}
+
 .navbar-search {
   display: flex;
   align-items: center;
-  flex-grow: 1;
-  max-width: 1000px;
+  background-color: #fefefe; /* Fondo crema */
+  border: 3px solid #fef4b1; /* Bordes crema */
+  border-radius: 20px;
+  padding: 8px; /* Espacio interno para mayor comodidad */
+  width: 100%; /* La barra ocupará todo el ancho disponible */
+  max-width: 900px;
   margin: 0 20px;
 }
 
 .navbar-search input {
   flex-grow: 1;
-  padding: 8px 12px;
-  border: 3px solid #fef4b1; /* Bordes crema */
-  border-radius: 20px 20px 20px 20px;
+  border: none; /* Eliminamos el borde del input */
+  background: transparent; /* Para que el fondo sea uniforme con el contenedor */
+  padding-left: 10px; /* Espacio entre el icono y el texto */
   font-size: 16px;
   outline: none;
 }
 
-.navbar-search button {
-  background-color: #d1bfa4; /* Color crema más oscuro */
-  border: none;
-  border-radius: 0 20px 20px 0;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.navbar-search button svg {
-  color: #fff;
+.search-icon {
   font-size: 18px;
+  color: #333; /* Color de la lupa */
 }
 
 /* Pestañas a la derecha */
@@ -78,32 +77,67 @@
   color: #d6ad42; /* Color crema más oscuro al pasar el mouse */
 }
 
-/* Contenedor del popup (nube) */
+/* Estilos del popup */
 .popup {
-  position: absolute; /* Cambio a absolute para que se posicione relativo al icono */
-  top: 60px; /* Espacio desde el icono */
-  right: 15px; /* Ajusta para que se alinee con el borde derecho del icono */
+  position: absolute;
+  top: 60px;
+  right: 15px;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle efecto de nube */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   width: 300px;
-  z-index: 100; /* Aseguramos que esté sobre otros elementos */
+  z-index: 100;
+  opacity: 0; /* Oculto inicialmente */
+  transform: translateY(-20px); /* Desplazado hacia arriba */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+  height: auto;
+  
 }
 
+/* Cuando el popup está visible */
+.popup.show {
+  opacity: 1; /* Totalmente visible */
+  transform: translateY(0); /* Posición original */
+}
+
+/* Punta de la nube (se mantiene igual) */
 .popup::before {
   content: '';
   position: absolute;
-  top: -10px; /* Posiciona la punta de la nube */
-  right: 20px; /* Ajusta la posición para que la punta esté alineada con el icono */
+  top: -10px;
+  right: 20px;
   border-width: 10px;
   border-style: solid;
-  border-color: transparent transparent white transparent; /* Punta de la nube en blanco */
+  border-color: transparent transparent white transparent;
 }
+
 
 .popup-content {
   text-align: center;
   position: relative;
+}
+
+
+.sesion h5{
+  text-align: left;
+  margin: 5px;
+  border-bottom: 2px solid #59402f;
+}
+
+.sesion p{
+  text-align: left;
+  font-size: 16px !important;
+  padding-left: 5px;
+  margin-top: 20px;
+}
+
+.pestana-perfil:hover{
+  border-left: 3px solid #59402f;
+}
+
+.pestana-cerrar:hover{
+  border-left: 3px solid #59402f;
 }
 
 .close-btn {
@@ -197,11 +231,18 @@
   background-color: white;
   width: 390px;
   height: 100%;
-  padding: 20px;
+  
   box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-popup h3{
+  padding-left: 20px;
+  padding-top: 20px;
 }
 
 .close-btn {
@@ -216,6 +257,8 @@
 
 .cart-items {
   margin-top: 20px;
+  padding: 20px;
+  padding-top: 0;
 }
 
 .cart-item {
@@ -251,9 +294,14 @@
 }
 
 .cart-summary {
-  margin-top: 20px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
+  position: sticky; /* Mantiene el resumen visible al hacer scroll */
+  bottom: 0; /* Asegura que esté en la parte inferior */
+  background-color: white; /* Asegura que el fondo sea blanco */
+  z-index: 1; /* Asegura que esté por encima de los items del carrito */
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2); /* Sombreado en la parte superior */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
 }
 
 .view-cart-btn {
@@ -289,6 +337,15 @@
 .convert-list-btn:hover {
   background-color: #d6ad42;
 }
+
+.delete-icon{
+  margin-left: 50px;
+}
+
+.delete-icon:hover{
+  cursor: pointer;
+}
+
 
 
 /* Estilos responsivos para pantallas más pequeñas */

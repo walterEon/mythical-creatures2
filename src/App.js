@@ -5,6 +5,7 @@ import Carrito from './pages/Carrito/Carrito.js';
 import Navbar from './components/Navbar/Navbar.js';
 import Categoria from './pages/Categoria/Categoria.js';
 import AccessibilityButton from './components/AccessibilityButton/AccessibilityButton.js';
+import ProductoInfo from './pages/ProductoInfo/ProductoInfo.js';
 import Footer from './components/Footer/Footer.js';
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/categoria/:id' element={<Categoria />} />
+            <Route path='/producto-info/:id' element={<ProductoInfo />} />
             <Route path='/perfil' element={<Perfil />} />
             <Route path='/carrito' element={<Carrito />} />
           </Routes>

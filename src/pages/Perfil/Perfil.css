@@ -1,4 +1,143 @@
-.perfil-page h1{
-  text-align: center;
-  margin-top: 15px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho/alto */
 }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+.perfil-container {
+  display: flex;
+  width: 100%;
+  margin: 0; /* Eliminar margen externo */
+  padding: 0;
+  max-width: 100vw; /* Asegurarse de que no exceda el ancho de la pantalla */
+  height: auto;
+}
+
+
+
+.perfil-sidebar {
+  width: 20%;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+  height: 100vh; /* Asegura que ocupe todo el alto de la pantalla */
+  margin-left: 100px;
+  margin-top: 100px;
+  height: auto;
+
+}
+
+.perfil-content {
+  width: 80%;
+  padding: 20px;
+  margin-top: 100px;
+}
+
+
+.perfil-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.perfil-sidebar li {
+  padding: 10px 0;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.perfil-sidebar li:hover {
+  border-left: 3px solid #59402f;
+}
+
+.perfil-sidebar li.active {
+  border-left: 3px solid #59402f;
+  background-color: #f0f0f0; /* Opcional: agrega un color de fondo para la sección activa */
+}
+
+.perfil-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Estilos del popup */
+.logout-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content-p {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.popup-content-p button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #59402f;
+  color: white;
+}
+
+.popup-content-p button:hover {
+  background-color: #896954;
+}
+
+.form-perfil{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.form-section{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.form-section label{
+  font-weight: bold;
+}
+
+.form-section input{
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.cambiarc-b{
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #59402f;
+  color: white;
+}
+
+.cambiarc-b:hover{
+  background-color: #896954;
+}
+
+
+

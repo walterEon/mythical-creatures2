@@ -28,7 +28,7 @@ function Categoria() {
             name: 'Galletas de Estrella de Mar para Sirenas',
             description: 'Galletas crujientes hechas con algas y polvo de perlas, especialmente formuladas para las sirenas amantes de los sabores marinos.',
             price: 25.00,
-            discount: 10,
+            discount: 0,
             categoria: 'gourmet',
             subCategoria: 'galletas',
             marca: 'OceanTreats',
@@ -102,6 +102,20 @@ function Categoria() {
         setFiltros(newFilters);
     };
 
+    const addToCart = (product) => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const productInCart = cart.find(item => item.id === product.id);
+      
+        if (productInCart) {
+          productInCart.quantity += 1; // Si ya está en el carrito, solo aumenta la cantidad
+        } else {
+          cart.push({ ...product, quantity: 1 }); // Si no está, lo agrega con cantidad 1
+        }
+      
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${product.name} ha sido agregado al carrito`);
+      };
+
     const productosFiltrados = productosMitologicos.filter((producto) => {
         return (
             (!filtros.categoria || producto.categoria === filtros.categoria) &&
@@ -120,12 +134,13 @@ function Categoria() {
                 <div className="productos-grid">
                     {productosFiltrados.map((producto) => (
                         <Producto
-                            key={producto.id}
+                            id={producto.id}
                             image={producto.image}
                             name={producto.name}
                             price={producto.price}
                             discount={producto.discount}
                             description={producto.description}
+                            onAddToCart={() => addToCart(producto)}
                         />
                     ))}
                 </div>
