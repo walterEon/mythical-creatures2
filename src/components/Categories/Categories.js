@@ -1,12 +1,23 @@
 import './Categories.css';
 import icono from './sea-dragon_38125.jpg';
 import { useNavigate } from 'react-router-dom';
+import SoundPlayer from '../SoundPlayer/SoundPlayer';
+import { useRef } from 'react';
 
 function Categories() {
 
     const navigate = useNavigate();
+
+    const soundPlayerRef = useRef(null);
+
+    const playSound = (soundName) => {
+      if (soundPlayerRef.current) {
+        soundPlayerRef.current.playSound(soundName);
+      }
+    };
   
     const handleClick = (id) => {
+        playSound('buttonSound');
         navigate(`/categoria/${id}`);
     }
 
@@ -72,6 +83,7 @@ function Categories() {
         </div>
         <label>Mantícora</label>
       </div>
+      <SoundPlayer ref={soundPlayerRef} />
     </div>
   );
 }

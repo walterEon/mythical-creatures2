@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Categoria.css';
 import Filtros from '../../components/Filtros/Filtros';
 import Producto from '../../components/Producto/Producto';
+import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
+import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import galletas from './galletas.jpg';
 import manzanas from './manzanas.jpg';
@@ -13,6 +15,7 @@ import raices from './raices.jpg';
 function Categoria() {
 
     const {id} = useParams();
+    const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false); // Popup de éxito
     const [filtros, setFiltros] = useState({
         categoria: '',
         subCategoria: '',
@@ -96,11 +99,21 @@ function Categoria() {
         }
     ];
     
-    
+    const soundPlayerRef = useRef(null);
+
+    const playSound = (soundName) => {
+      if (soundPlayerRef.current) {
+        soundPlayerRef.current.playSound(soundName);
+      }
+    };
 
     const handleFilterChange = (newFilters) => {
         setFiltros(newFilters);
     };
+
+    const closeSuccessPopup = () => {
+        setIsSuccessPopupOpen(false); // Cierra el popup de éxito
+      };
 
     const addToCart = (product) => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -113,7 +126,8 @@ function Categoria() {
         }
       
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert(`${product.name} ha sido agregado al carrito`);
+        setIsSuccessPopupOpen(true);
+        playSound('successSound');
       };
 
     const productosFiltrados = productosMitologicos.filter((producto) => {
@@ -126,6 +140,11 @@ function Categoria() {
             producto.price <= filtros.rangoPrecio[1]
         );
     });
+
+    useEffect(() => {
+        // Esto se ejecuta cada vez que los filtros cambian
+        console.log('Filtros actualizados:', filtros);
+    }, [filtros]);
 
     return (
         <div className="categoria-page">
@@ -145,6 +164,17 @@ function Categoria() {
                     ))}
                 </div>
             </div>
+            {/* Popup de éxito */}
+      {isSuccessPopupOpen && (
+        <div className="logout-popup">
+          <div className="popup-content-p">
+            <h2>¡Éxito!</h2>
+            <p>Su producto ha sido añadido al carrito.</p>
+            <button onClick={closeSuccessPopup}>OK</button>
+          </div>
+        </div>
+      )}
+      <SoundPlayer ref={soundPlayerRef} />
         </div>
     );
 }

@@ -3,11 +3,14 @@ import logo from './mythical_gourmet_nb.png';
 import { FaSearch, FaShoppingCart, FaUser, FaTrash, FaMicrophone } from 'react-icons/fa';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SoundPlayer from '../SoundPlayer/SoundPlayer';
 import galletas from '../../pages/Categoria/galletas.jpg';
 import manzanas from '../../pages/Categoria/manzanas.jpg';
 
 function Navbar() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false); // Popup de éxito
+
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -23,6 +26,14 @@ function Navbar() {
 
   const navigate = useNavigate();
 
+  const soundPlayerRef = useRef(null);
+
+  const playSound = (soundName) => {
+    if (soundPlayerRef.current) {
+      soundPlayerRef.current.playSound(soundName);
+    }
+  };
+
   const [escuchando, setEscuchando] = useState(false);
   const [email, setEmail] = useState('');
   const [email2, setEmail2] = useState('');
@@ -30,6 +41,7 @@ function Navbar() {
   const [campoActivo, setCampoActivo] = useState('');
   const [micActivo, setMicActivo] = useState('');
   // Configurar el reconocimiento de voz
+
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const reconocimiento = new SpeechRecognition();
 
@@ -127,6 +139,8 @@ function Navbar() {
     localStorage.setItem('userSession', 'active');
     setIsLoggedIn(true);
     setIsPopupOpen(false);
+    setIsSuccessPopupOpen(true); // Mostrar popup de éxito
+    playSound('successSound');
   };
 
   const handleLogout = () => {
@@ -152,10 +166,12 @@ function Navbar() {
   };
 
   const togglePopup = () => {
+    playSound('buttonSound');
     setIsPopupOpen(!isPopupOpen);
   };
 
   const toggleCart = () => {
+    playSound('buttonSound');
     setIsCartOpen(!isCartOpen);
     setIsPopupOpen(false);
   };
@@ -186,9 +202,11 @@ function Navbar() {
 
   // Confirmar eliminación del producto
   const confirmDeleteItem = () => {
+    playSound('deleteSound');
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemToDelete.id));
     localStorage.setItem('cart', JSON.stringify(cartItems.filter((item) => item.id !== itemToDelete.id))); // Actualizar localStorage
     setShowDeletePopup(false);
+    
     setItemToDelete(null);
   };
 
@@ -197,7 +215,9 @@ function Navbar() {
     setItemToDelete(null);
   };
 
-
+  const closeSuccessPopup = () => {
+    setIsSuccessPopupOpen(false); // Cierra el popup de éxito
+  };
 
   const addToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -444,6 +464,17 @@ function Navbar() {
         </div>
       )}
 
+      {/* Popup de éxito */}
+      {isSuccessPopupOpen && (
+        <div className="logout-popup">
+          <div className="popup-content-p">
+            <h2>¡Éxito!</h2>
+            <p>Ha iniciado sesión exitosamente.</p>
+            <button onClick={closeSuccessPopup}>OK</button>
+          </div>
+        </div>
+      )}
+
       {showLogoutPopup && (
         <div className="logout-popup">
           <div className="popup-content-p">
@@ -464,6 +495,7 @@ function Navbar() {
           </div>
         </div>
       )}
+      <SoundPlayer ref={soundPlayerRef} />
     </div>
   );
 }
