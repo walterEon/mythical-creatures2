@@ -9,6 +9,7 @@ const Producto = ({ id, image, name, price, discount, description, onAddToCart }
     const goToProduct = (id)  => {
         console.log('ID: '+id);
         navigate(`/producto-info/${id}`);
+        
     }
 
     return (
