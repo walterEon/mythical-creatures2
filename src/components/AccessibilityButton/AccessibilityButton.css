@@ -97,7 +97,6 @@
   background-color: rgba(0, 0, 0, 0); /* Darken the background slightly */
   pointer-events: none;
   z-index: 9999;
-  height: 100px;
 }
 
 .adhd-mode::after {
@@ -109,8 +108,8 @@
   bottom: 0;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.5), /* Bright highlighted stripe */
-    rgba(11,11, 11, 0.8) calc(var(--cursor-y) - 50px),
+    rgba(11, 11, 11, 0.8), /* Bright highlighted stripe */
+    rgba(11, 11, 11, 0.8) calc(var(--cursor-y) - 50px),
     rgba(255, 255, 255, 0) calc(var(--cursor-y) - 50px),
     rgba(255, 255, 255, 0) calc(var(--cursor-y) + 50px),
     rgba(11, 11, 11, 0.8) calc(var(--cursor-y) + 50px)
@@ -118,6 +117,53 @@
   pointer-events: none;
   z-index: 10000;
 }
+
+.lupa-tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 24px; /* This is the enlarged text size */
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.text-container p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.lupa-overlay {
+  position: fixed;
+  display: none;
+  padding: 15px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo blanco con un poco de transparencia */
+  border: 2px solid rgba(0, 0, 0, 0.2); /* Borde suave */
+  border-radius: 10px; /* Bordes redondeados */
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Sombra para darle profundidad */
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; /* Suave transición para aparecer/desaparecer */
+}
+
+.lupa-overlay-visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Hace que aparezca suavemente */
+}
+
+.lupa-overlay-hidden {
+  opacity: 0;
+  transform: translateY(-10px); /* Mueve ligeramente hacia arriba al desaparecer */
+  pointer-events: none;
+}
+
+
+
 
 
   

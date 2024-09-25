@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaUniversalAccess } from 'react-icons/fa';
 import './AccessibilityButton.css';
 
@@ -7,7 +7,54 @@ function AccessibilityButton() {
   const [contrast, setContrast] = useState('normal');
   const [adhdProfile, setAdhdProfile] = useState(false);
   const [daltonismo, setDaltonismo] = useState('none');
-  // Function to adjust text size
+  const [lupa, setLupa] = useState(false);
+  const [lupaContent, setLupaContent] = useState('');
+  const lupaRef = useRef(null);
+
+  // Toggle the Lupa feature on and off
+  const toggleLupa = () => {
+    setLupa(prevState => !prevState);
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (lupa && lupaRef.current) {
+        const x = e.clientX;
+        const y = e.clientY;
+        lupaRef.current.style.left = `${x + 10}px`;
+        lupaRef.current.style.top = `${y + 10}px`;
+      }
+    };
+
+    const handleMouseEnter = (e) => {
+      if (lupa && e.target.tagName.match(/P|H1|H2|H3|H4|H5|H6|SPAN|A|BUTTON|INPUT|LABEL|SELECT/i)) {
+        setLupaContent(e.target.textContent);
+        if (lupaRef.current) {
+          lupaRef.current.style.display = 'block';
+        }
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (lupaRef.current) {
+        lupaRef.current.style.display = 'none';
+      }
+    };
+
+    if (lupa) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseover', handleMouseEnter);
+      document.addEventListener('mouseout', handleMouseLeave);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseover', handleMouseEnter);
+      document.removeEventListener('mouseout', handleMouseLeave);
+    };
+  }, [lupa]);
+
+   // Function to adjust text size
   const adjustTextSize = (e) => {
     document.documentElement.style.fontSize = `${e.target.value}px`;
     document.body.style.fontSize = `${e.target.value}px`;
@@ -15,6 +62,7 @@ function AccessibilityButton() {
 
   // Function to toggle contrast levels
   const toggleContrast = () => {
+    setDaltonismo('none');
     setContrast(prevContrast => {
       switch(prevContrast) {
         case 'normal':
@@ -30,10 +78,25 @@ function AccessibilityButton() {
   };
 
   const toggleDaltonismo = (tipo) => {
+    //setAdhdProfile(false);
     const nuevoFiltro = daltonismo === tipo ? 'none' : tipo; // Si ya está activado, desactivar
     setDaltonismo(nuevoFiltro);
-    document.body.className = nuevoFiltro; // Aplica el filtro al body
-    localStorage.setItem('daltonismo', nuevoFiltro); // Guarda el filtro en localStorage
+    document.body.classList.add(nuevoFiltro); // Aplica el filtro al body
+    //localStorage.setItem('daltonismo', nuevoFiltro); // Guarda el filtro en localStorage
+    if(nuevoFiltro === 'none'){
+      document.body.classList.remove('protanopia');
+      document.body.classList.remove('deuteranopia');
+      document.body.classList.remove('tritanopia');
+    }else if(nuevoFiltro === 'protanopia'){
+      document.body.classList.remove('deuteranopia');
+      document.body.classList.remove('tritanopia');
+    }else if(nuevoFiltro === 'deuteranopia'){
+      document.body.classList.remove('protanopia');
+      document.body.classList.remove('tritanopia');
+    }else if(nuevoFiltro === 'tritanopia'){
+      document.body.classList.remove('protanopia');
+      document.body.classList.remove('deuteranopia');
+    }
   };
 
   // Effect to apply contrast changes
@@ -55,6 +118,8 @@ function AccessibilityButton() {
   const toggleAdhdProfile = () => {
     setAdhdProfile(prevState => !prevState);
   };
+
+  
 
   // Updated function to apply the ADHD effect
   const applyAdhdEffect = (e) => {
@@ -102,6 +167,14 @@ function AccessibilityButton() {
               <input type="range" min="14" max="30" defaultValue="16" onChange={adjustTextSize} />
             </div>
 
+
+            <div className="accessibility-option">
+              <span>Lupa de Texto</span>
+              <button onClick={toggleLupa}>
+                {lupa ? 'Desactivar' : 'Activar'}
+              </button>
+            </div>
+
             <div className="accessibility-option">
               <span>Ajustar contraste</span>
               <button onClick={toggleContrast}>
@@ -109,6 +182,7 @@ function AccessibilityButton() {
               </button>
             </div>
           </div>
+          
 
           <div className="accessibility-options">
             <h5>Enfoque TDAH</h5>
@@ -150,6 +224,15 @@ function AccessibilityButton() {
               <button onClick={resetAccessibilitySettings}>Restablecer ajustes</button>
             </div>
           </div>
+          {lupa && (
+        <div 
+          ref={lupaRef} 
+          className="lupa-overlay"
+        >
+          {lupaContent}
+        </div>
+      )}
+        
         </div>
       )}
     </div>

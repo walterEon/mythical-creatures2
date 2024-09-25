@@ -42,6 +42,11 @@ body {
   margin: 0 20px;
 }
 
+.mic-icon:hover{
+  cursor: pointer;
+  color: #4a4848;
+}
+
 .navbar-search input {
   flex-grow: 1;
   border: none; /* Eliminamos el borde del input */

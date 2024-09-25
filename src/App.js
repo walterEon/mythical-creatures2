@@ -13,6 +13,7 @@ import './App.css';
 function App() {
   return (
     <>
+    <div className='whole-page'> 
       <Navbar />  
       <div className="page-content">
         <div className="main-content">
@@ -30,6 +31,8 @@ function App() {
 
       {/* Botón de accesibilidad */}
       <AccessibilityButton />
+
+  </div>
       
     </>
   );

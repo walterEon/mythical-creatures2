@@ -1,6 +1,6 @@
 import './Navbar.css';
 import logo from './mythical_gourmet_nb.png';
-import { FaSearch, FaShoppingCart, FaUser, FaTrash } from 'react-icons/fa';
+import { FaSearch, FaShoppingCart, FaUser, FaTrash, FaMicrophone } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import galletas from '../../pages/Categoria/galletas.jpg';
@@ -123,6 +123,10 @@ function Navbar() {
     setItemToDelete(null);
   };
 
+  const toggleMic = () => {
+    console.log('se activo el mic');
+  };
+
 
   const addToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -234,6 +238,7 @@ function Navbar() {
           value={searchTerm}
           onChange={handleSearchChange}
         />
+        <FaMicrophone className='mic-icon'  onClick={toggleMic} size={23}/>
         {searchResults.length > 0 && isSearchOpen && <SearchResults />}
       </div>
 
