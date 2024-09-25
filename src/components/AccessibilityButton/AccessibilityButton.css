@@ -28,6 +28,35 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   z-index: 1001;
+  max-height: 600px; /* Altura máxima del menú */
+  overflow-y: auto; /* Habilita scroll vertical si es necesario */
+}
+
+/* Personalización de scrollbar para navegadores basados en WebKit (Chrome, Safari, Edge) */
+.accessibility-menu::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+.accessibility-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); /* Color del deslizante */
+  border-radius: 10px; /* Bordes redondeados para el deslizante */
+  border: 2px solid transparent; /* Espacio alrededor del deslizante */
+  background-clip: padding-box; /* Evita que el borde se superponga */
+}
+
+.accessibility-menu::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Color al pasar el ratón por encima */
+}
+
+.accessibility-menu::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Color del fondo de la barra de desplazamiento */
+  border-radius: 10px;
+}
+
+/* Estilos para navegadores basados en Firefox */
+.accessibility-menu {
+  scrollbar-width: thin; /* Establece un ancho delgado para Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.2) #f0f0f0; /* Color del deslizante y fondo */
 }
 
 .accessibility-header {

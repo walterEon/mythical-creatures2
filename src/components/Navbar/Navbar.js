@@ -23,6 +23,38 @@ function Navbar() {
 
   const navigate = useNavigate();
 
+  const [escuchando, setEscuchando] = useState(false);
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const reconocimiento = new SpeechRecognition();
+
+  reconocimiento.continuous = false;
+  reconocimiento.lang = "es-ES";
+  reconocimiento.interimResults = false;
+  reconocimiento.maxAlternatives = 1;
+
+  reconocimiento.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    setSearchTerm(transcript);
+    setIsSearchOpen(true);
+    setEscuchando(false);
+  };
+
+  const iniciarEscucha = () => {
+    setEscuchando(true);
+    reconocimiento.start();
+  };
+
+  reconocimiento.onspeechend = () => {
+    reconocimiento.stop();
+    setEscuchando(false);
+  };
+
+  reconocimiento.onerror = (event) => {
+    console.error("Error al reconocer la voz: ", event.error);
+    setEscuchando(false);
+  };
+
    // Función para manejar el clic en "Olvidé mi contraseña"
    const forgotPassword = () => {
     setShowForgot(true);  // Mostrar el formulario de "Forgot Password"
@@ -47,6 +79,7 @@ function Navbar() {
       setCartItems(storedCart);
     }
   }, [isCartOpen]);
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -123,9 +156,6 @@ function Navbar() {
     setItemToDelete(null);
   };
 
-  const toggleMic = () => {
-    console.log('se activo el mic');
-  };
 
 
   const addToCart = (product) => {
@@ -144,6 +174,7 @@ function Navbar() {
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
+    console.log("NUEVA BUSQ: "+value);
     setIsSearchOpen(true);
     setSearchTerm(value);
     if (value.length > 0) {
@@ -238,7 +269,13 @@ function Navbar() {
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <FaMicrophone className='mic-icon'  onClick={toggleMic} size={23}/>
+        
+        <FaMicrophone
+          className="mic-icon"
+          onClick={iniciarEscucha}
+          size={23}
+          style={{ color: escuchando ? 'red' : 'black' }}
+        />
         {searchResults.length > 0 && isSearchOpen && <SearchResults />}
       </div>
 
