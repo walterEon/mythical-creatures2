@@ -6,7 +6,7 @@ function AccessibilityButton() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [contrast, setContrast] = useState('normal');
   const [adhdProfile, setAdhdProfile] = useState(false);
-
+  const [daltonismo, setDaltonismo] = useState('none');
   // Function to adjust text size
   const adjustTextSize = (e) => {
     document.documentElement.style.fontSize = `${e.target.value}px`;
@@ -29,6 +29,13 @@ function AccessibilityButton() {
     });
   };
 
+  const toggleDaltonismo = (tipo) => {
+    const nuevoFiltro = daltonismo === tipo ? 'none' : tipo; // Si ya está activado, desactivar
+    setDaltonismo(nuevoFiltro);
+    document.body.className = nuevoFiltro; // Aplica el filtro al body
+    localStorage.setItem('daltonismo', nuevoFiltro); // Guarda el filtro en localStorage
+  };
+
   // Effect to apply contrast changes
   useEffect(() => {
     document.body.className = `contrast-${contrast}`;
@@ -38,6 +45,7 @@ function AccessibilityButton() {
   const resetAccessibilitySettings = () => {
     setContrast('normal');
     setAdhdProfile(false);
+    setDaltonismo('none');
     document.documentElement.style.fontSize = '16px';
     document.body.style.fontSize = '16px';
     document.body.className = ''; // Reset any classes
@@ -108,6 +116,30 @@ function AccessibilityButton() {
               <span>Perfil con menos distracciones</span>
               <button onClick={toggleAdhdProfile}>
                 {adhdProfile ? 'Desactivar' : 'Activar'}
+              </button>
+            </div>
+          </div>
+
+          <div className="accessibility-options">
+            <h5>Filtros de Daltonismo</h5>
+            <div className="accessibility-option">
+              <span>Protanopia</span>
+              <button onClick={() => toggleDaltonismo('protanopia')}>
+                {daltonismo === 'protanopia' ? 'Desactivar' : 'Activar'}
+              </button>
+            </div>
+
+            <div className="accessibility-option">
+              <span>Deuteranopia</span>
+              <button onClick={() => toggleDaltonismo('deuteranopia')}>
+                {daltonismo === 'deuteranopia' ? 'Desactivar' : 'Activar'}
+              </button>
+            </div>
+
+            <div className="accessibility-option">
+              <span>Tritanopia</span>
+              <button onClick={() => toggleDaltonismo('tritanopia')}>
+                {daltonismo === 'tritanopia' ? 'Desactivar' : 'Activar'}
               </button>
             </div>
           </div>
