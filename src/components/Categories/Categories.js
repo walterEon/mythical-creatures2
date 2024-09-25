@@ -12,62 +12,62 @@ function Categories() {
 
   return (
     <div className="categories-container">
-      <div className='categoria' onClick={() => handleClick('Dragón')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Dragón')}>
             <img src={icono} alt='dragon'></img>
         </div>
         <label>Dragón</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Fénix')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Fénix')}>
         <img src={icono} alt='dragon'></img>
         </div>  
         <label>Fénix</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Unicornio')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Unicornio')}>
         <img src={icono} alt='dragon'></img>
         </div>
         <label>Unicornio</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Basilisco')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Basilisco')}>
             <img src={icono} alt='dragon'></img>
         </div>
         <label>Basilisco</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Niffler')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Niffler')}>
             <img src={icono} alt='dragon'></img>
         </div>
         <label>Niffler</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Grindylow')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Grindylow')}>
             <img src={icono} alt='dragon'></img>
         </div>
         <label>Grindylow</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Bowtruckle')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Bowtruckle')}>
             <img src={icono} alt='dragon'></img>
         </div>
         <label>Bowtruckle</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Erumpent')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Erumpent')}>
             <img src={icono} alt='dragon'></img>
         </div>
         <label>Erumpent</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Acromantula')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Acromantula')}>
             <img src={icono} alt='dragon'></img>
         </div>
         <label>Acromantula</label>
       </div>
-      <div className='categoria' onClick={() => handleClick('Mantícora')}>
-        <div className='imagen-container'>
+      <div className='categoria' >
+        <div className='imagen-container' onClick={() => handleClick('Mantícora')}>
             <img src={icono} alt='dragon'></img>
         </div>
         <label>Mantícora</label>

@@ -9,6 +9,7 @@ function AccessibilityButton() {
   const [daltonismo, setDaltonismo] = useState('none');
   const [lupa, setLupa] = useState(false);
   const [lupaContent, setLupaContent] = useState('');
+  const [textReadingActive, setTextReadingActive] = useState(false);
   const lupaRef = useRef(null);
 
   // Toggle the Lupa feature on and off
@@ -104,11 +105,38 @@ function AccessibilityButton() {
     document.body.className = `contrast-${contrast}`;
   }, [contrast]);
 
+  // Function to read text content when an element is clicked
+  const readTextContent = (text) => {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'es-ES';  // Set the language to Spanish
+    window.speechSynthesis.speak(speech);
+  };
+
+  // Effect to handle clicks on elements and read their content only if text reading is active
+  useEffect(() => {
+    if (textReadingActive) {
+      const handleClick = (e) => {
+        if (e.target.tagName.match(/BUTTON|INPUT|A|P|H1|H2|H3|H4|H5|LABEL|SELECT/i)) {
+          readTextContent(e.target.textContent || e.target.value || e.target.alt || 'Elemento seleccionado');
+        }
+      };
+
+      document.addEventListener('click', handleClick);
+
+      return () => {
+        document.removeEventListener('click', handleClick);
+      };
+    }
+  }, [textReadingActive]);
+
+
   // Reset all accessibility settings
   const resetAccessibilitySettings = () => {
     setContrast('normal');
     setAdhdProfile(false);
     setDaltonismo('none');
+    setLupa(false);
+    setTextReadingActive(false); // Desactivar lectura de texto al restablecer
     document.documentElement.style.fontSize = '16px';
     document.body.style.fontSize = '16px';
     document.body.className = ''; // Reset any classes
@@ -147,6 +175,11 @@ function AccessibilityButton() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Toggle the text reading functionality
+  const toggleTextReading = () => {
+    setTextReadingActive(prevState => !prevState);
   };
 
   return (
@@ -190,6 +223,16 @@ function AccessibilityButton() {
               <span>Perfil con menos distracciones</span>
               <button onClick={toggleAdhdProfile}>
                 {adhdProfile ? 'Desactivar' : 'Activar'}
+              </button>
+            </div>
+          </div>
+
+          <div className="accessibility-options">
+            <h5>Lectura de Texto</h5>
+            <div className="accessibility-option">
+              <span>Lectura de contenido</span>
+              <button onClick={toggleTextReading}>
+                {textReadingActive ? 'Desactivar' : 'Activar'}
               </button>
             </div>
           </div>
