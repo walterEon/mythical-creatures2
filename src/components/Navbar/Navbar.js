@@ -219,6 +219,11 @@ function Navbar() {
     setIsSuccessPopupOpen(false); // Cierra el popup de éxito
   };
 
+  const goComprar = () => {
+    setIsCartOpen(false);
+    navigate('/compra');
+  }
+
   const addToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const productInCart = cart.find(item => item.id === product.id);
@@ -382,7 +387,7 @@ function Navbar() {
                 <p>Costo de entrega: GRATIS</p>
                 <h4>Total: S/ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</h4>
                 <button className="view-cart-btn" onClick={goCarrito}>VER CARRITO</button>
-                <button className="view-cart-btn" onClick={goCarrito}>COMPRAR AHORA</button>
+                <button className="view-cart-btn" onClick={goComprar}>COMPRAR AHORA</button>
               </div>
             )}
             

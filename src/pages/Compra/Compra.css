@@ -1,0 +1,195 @@
+.compra-page h1{
+    text-align: center;
+    margin-top: 15px;
+    
+  }
+
+.cuerpo-compra{
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.pasos-compra{
+    width: 65%;
+}
+
+.pasos-superior{
+    display: flex;
+    justify-content: center;
+}
+
+.paso-id{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 50%;
+}
+
+.paso-dir{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 50%;
+}
+
+.pasos-inferior{
+    display: flex;
+    justify-content: center;
+}
+
+.resumen-compra{
+    width: 35%;
+}
+
+.form-identificacion {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.form-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    color: #d23f31;
+    margin-bottom: 10px;
+}
+
+.form-title .icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.identificacion-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.factura-btn {
+    background-color: #d23f31;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.factura-btn:hover {
+    background-color: #b9362b;
+}
+
+.metodo-entrega-link {
+    color: #d23f31;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+.metodo-entrega-link:hover {
+    text-decoration: underline;
+}
+
+.form-entrega {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.form-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    color: #d23f31;
+    margin-bottom: 10px;
+}
+
+.form-title .icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.opciones-entrega {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.entrega-btn {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 48%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.entrega-btn.active {
+    background-color: #d23f31;
+    color: white;
+    border-color: #d23f31;
+}
+
+.entrega-btn:hover {
+    border-color: #b9362b;
+}
+
+.direccion {
+    margin-top: 20px;
+}
+
+.direccion label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.direccion input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+
+
