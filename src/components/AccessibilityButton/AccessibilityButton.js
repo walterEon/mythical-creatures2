@@ -218,6 +218,13 @@ function AccessibilityButton() {
             </div>
 
             <div className="accessibility-option">
+              <span>Lector de Pantalla</span>
+              <button onClick={toggleTextReading}>
+                {textReadingActive ? 'Desactivar' : 'Activar'}
+              </button>
+            </div>
+
+            <div className="accessibility-option">
               <span>Ajustar contraste</span>
               <button onClick={toggleContrast}>
                 {contrast === 'normal' ? 'Normal' : contrast === 'high' ? 'Alto' : 'Bajo'}
@@ -236,15 +243,7 @@ function AccessibilityButton() {
             </div>
           </div>
 
-          <div className="accessibility-options">
-            <h5>Lectura de Texto</h5>
-            <div className="accessibility-option">
-              <span>Lectura de contenido</span>
-              <button onClick={toggleTextReading}>
-                {textReadingActive ? 'Desactivar' : 'Activar'}
-              </button>
-            </div>
-          </div>
+          
 
           <div className="accessibility-options">
             <h5>Filtros de Daltonismo</h5>
