@@ -9,6 +9,8 @@ import AccessibilityButton from './components/AccessibilityButton/AccessibilityB
 import ProductoInfo from './pages/ProductoInfo/ProductoInfo.js';
 import Compra from './pages/Compra/Compra.js';
 import Footer from './components/Footer/Footer.js';
+import ProcesandoPedido from './pages/ProcesandoPedido/ProcesandoPedido.js';
+import PedidoExito from './pages/PedidoExito/PedidoExito.js';
 import './App.css';
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
             <Route path='/registro' element={<Registro />} />
             <Route path='/carrito' element={<Carrito />} />
             <Route path='/compra' element={<Compra />} />
+            <Route path="/procesando-pedido" element={<ProcesandoPedido />} />
+          <Route path="/pedido-exito" element={<PedidoExito />} />
           </Routes>
         </div>
         <Footer />

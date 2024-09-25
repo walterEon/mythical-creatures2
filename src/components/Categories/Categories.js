@@ -21,6 +21,8 @@ function Categories() {
         navigate(`/categoria/${id}`);
     }
 
+    
+
   return (
     <div className="categories-container">
       <div className='categoria' >

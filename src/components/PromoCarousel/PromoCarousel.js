@@ -77,7 +77,7 @@ const styles = {
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     display: 'flex',
     alignItems: 'center',
-    overflowy: 'auto',
+
   },
   textContent: {
     flex: '1',

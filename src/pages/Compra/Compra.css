@@ -4,11 +4,27 @@
     
   }
 
+  .compra-page h3{
+    text-align: center;
+    color: #59402f;
+    font-weight: bold;
+    
+  }
+
 .cuerpo-compra{
     display: flex;
     justify-content: center;
     margin-left: 50px;
     margin-right: 50px;
+}
+
+.item-quantity span{
+    background-color: #59402f;
+    color: white;
+    border-radius: 23px;
+    padding: 3px;
+    width: 35px;
+    text-align: center;
 }
 
 .pasos-compra{
@@ -190,6 +206,122 @@
     border-radius: 4px;
     font-size: 1em;
 }
+
+.form-pago {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 700px;
+}
+
+.form-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    color: #d23f31;
+    margin-bottom: 10px;
+}
+
+.form-title .icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.opciones-pago {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.pago-btn {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    flex: 1;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.pago-btn.active {
+    background-color: #d23f31;
+    color: white;
+    border-color: #d23f31;
+}
+
+.pago-btn .icon {
+    margin-left: 10px;
+}
+
+.detalles-tarjeta {
+    margin-top: 20px;
+}
+
+.detalles-tarjeta label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.detalles-tarjeta input,
+.detalles-tarjeta select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.tarjetas-aceptadas img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.vencimiento-seguridad {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.vencimiento-seguridad div {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.fecha-vencimiento {
+    display: flex;
+    gap: 10px;
+}
+
+.direccion-facturacion {
+    margin-top: 20px;
+}
+
+.direccion-facturacion label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.direccion-facturacion input,
+.direccion-facturacion select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.numero-piso {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 
 
 

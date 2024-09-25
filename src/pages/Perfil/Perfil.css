@@ -140,5 +140,28 @@ html, body {
   background-color: #896954;
 }
 
+.pedidos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.pedido-item {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.pedido-item p {
+  margin: 5px 0;
+}
+
+.pedido-item strong {
+  font-weight: bold;
+}
+
+
 
 

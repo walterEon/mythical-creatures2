@@ -1,0 +1,41 @@
+/* Contenedor principal */
+.procesando-pedido-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+    text-align: center;
+  }
+  
+  /* Título */
+  .procesando-pedido-container h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Texto de mensaje */
+  .procesando-pedido-container p {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+  
+  /* Animación de carga */
+  .spinner {
+    border: 8px solid #f3f3f3; /* Gris claro */
+    border-top: 8px solid #4CAF50; /* Verde */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Animación de rotación */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
