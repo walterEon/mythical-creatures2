@@ -60,11 +60,13 @@ const styles = {
     overflow: 'hidden',
     marginTop: '20px',
     marginBottom: '20px',
+    
   },
   carouselWrapper: {
     display: 'flex',
     transition: 'transform 0.3s ease-in-out',
     height: '200px',
+    
   },
   slide: {
     flexShrink: 0,
@@ -75,6 +77,7 @@ const styles = {
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     display: 'flex',
     alignItems: 'center',
+    overflowy: 'auto',
   },
   textContent: {
     flex: '1',

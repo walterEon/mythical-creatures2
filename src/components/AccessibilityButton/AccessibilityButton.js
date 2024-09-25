@@ -28,13 +28,22 @@ function AccessibilityButton() {
     };
 
     const handleMouseEnter = (e) => {
-      if (lupa && e.target.tagName.match(/P|H1|H2|H3|H4|H5|H6|SPAN|A|BUTTON|INPUT|LABEL|SELECT/i)) {
-        setLupaContent(e.target.textContent);
+      const target = e.target;
+      
+      if (lupa && target.tagName.match(/P|H1|H2|H3|H4|H5|H6|SPAN|A|BUTTON|INPUT|LABEL|SELECT|TEXTAREA/i)) {
+        // Verificar si es un input o textarea
+        if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+          setLupaContent(target.value); // Mostrar el valor del input
+        } else {
+          setLupaContent(target.textContent); // Mostrar el contenido de texto
+        }
+    
         if (lupaRef.current) {
           lupaRef.current.style.display = 'block';
         }
       }
     };
+    
 
     const handleMouseLeave = () => {
       if (lupaRef.current) {
@@ -267,15 +276,16 @@ function AccessibilityButton() {
               <button onClick={resetAccessibilitySettings}>Restablecer ajustes</button>
             </div>
           </div>
-          {lupa && (
+          
+        
+        </div>
+      )}
+      {lupa && (
         <div 
           ref={lupaRef} 
           className="lupa-overlay"
         >
           {lupaContent}
-        </div>
-      )}
-        
         </div>
       )}
     </div>
