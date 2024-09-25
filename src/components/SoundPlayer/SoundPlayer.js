@@ -1,7 +1,4 @@
 import { forwardRef, useImperativeHandle } from 'react';
-import success from './success.mp3';
-import button from './button.mp3';
-import deleteSound from './delete.mp3';
 
 // import login from './login.mp3';
 // import logout from './logout.mp3';
@@ -12,9 +9,9 @@ import deleteSound from './delete.mp3';
 
 const SoundPlayer = forwardRef((props, ref) => {
   const sounds = {
-    successSound: success,
-    buttonSound: button,
-    deleteSound: deleteSound,
+    successSound: '/sounds/success.mp3',
+    buttonSound: '/sounds/button.mp3',
+    deleteSound: '/sounds/delete.mp3',
     // loginSound: login,
     // logoutSound: logout,
     // popupSound: popup,
