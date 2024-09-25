@@ -1,7 +1,7 @@
 import './Navbar.css';
 import logo from './mythical_gourmet_nb.png';
 import { FaSearch, FaShoppingCart, FaUser, FaTrash, FaMicrophone } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import galletas from '../../pages/Categoria/galletas.jpg';
 import manzanas from '../../pages/Categoria/manzanas.jpg';
@@ -24,7 +24,12 @@ function Navbar() {
   const navigate = useNavigate();
 
   const [escuchando, setEscuchando] = useState(false);
-
+  const [email, setEmail] = useState('');
+  const [email2, setEmail2] = useState('');
+  const [password, setPassword] = useState('');
+  const [campoActivo, setCampoActivo] = useState('');
+  const [micActivo, setMicActivo] = useState('');
+  // Configurar el reconocimiento de voz
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const reconocimiento = new SpeechRecognition();
 
@@ -33,27 +38,63 @@ function Navbar() {
   reconocimiento.interimResults = false;
   reconocimiento.maxAlternatives = 1;
 
+  const iniciarEscuchaParaCampo = (campo) => {
+
+    setMicActivo(campo);
+    setEscuchando(true);  // Indicar que el micrófono está escuchando
+    reconocimiento.start();
+  
+    // Asignar el campo directamente al reconocimiento de voz
+    reconocimiento.onresult = (event) => {
+      let transcript = event.results[0][0].transcript;
+      transcript= transcript.replace(' arroba ', '@');
+  
+      // Actualizar el campo correcto según el parámetro pasado
+      if (campo === 'search') {
+        setSearchTerm(transcript);
+      } else if (campo === 'email') {
+        setEmail(transcript);
+      } else if (campo === 'password') {
+        setPassword(transcript);
+      } else if (campo === 'email2'){
+        setEmail2(transcript);
+      }
+  
+      setEscuchando(false);  // Finaliza la escucha
+    };
+  };
+  
+  // Función que maneja los resultados de la voz
   reconocimiento.onresult = (event) => {
     const transcript = event.results[0][0].transcript;
-    setSearchTerm(transcript);
-    setIsSearchOpen(true);
+  
+    if (campoActivo === 'search') {
+      setSearchTerm(transcript);  // Rellenar el campo de búsqueda
+    } else if (campoActivo === 'email') {
+      setEmail(transcript);  // Rellenar el campo de email
+    } else if (campoActivo === 'password') {
+      setPassword(transcript);  // Rellenar el campo de contraseña
+    } else if (campoActivo === 'email2'){
+      setEmail2(transcript);
+    }
+  
     setEscuchando(false);
   };
-
-  const iniciarEscucha = () => {
-    setEscuchando(true);
-    reconocimiento.start();
-  };
-
+  
+  // Detener cuando finaliza el reconocimiento
   reconocimiento.onspeechend = () => {
     reconocimiento.stop();
     setEscuchando(false);
+    setMicActivo('');
   };
-
+  
+  // Manejar errores
   reconocimiento.onerror = (event) => {
     console.error("Error al reconocer la voz: ", event.error);
     setEscuchando(false);
+    setMicActivo('');
   };
+
 
    // Función para manejar el clic en "Olvidé mi contraseña"
    const forgotPassword = () => {
@@ -267,14 +308,13 @@ function Navbar() {
           type="text"
           placeholder="Buscar alimentos gourmet..."
           value={searchTerm}
-          onChange={handleSearchChange}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        
         <FaMicrophone
           className="mic-icon"
-          onClick={iniciarEscucha}
+          onClick={() => iniciarEscuchaParaCampo('search')}
           size={23}
-          style={{ color: escuchando ? 'red' : 'black' }}
+          style={{ color: micActivo === 'search' ? 'red' : 'black' }}
         />
         {searchResults.length > 0 && isSearchOpen && <SearchResults />}
       </div>
@@ -345,16 +385,50 @@ function Navbar() {
                 <div>
                   <h5>Recuperar Contraseña</h5>
                   <form>
-                    <input type="email" placeholder="Ingresa tu correo" required />
-                    <button type="submit">Enviar Código</button>
+                    <div className="form-field">
+                      <input type="email" placeholder="Ingresa tu correo" value={email2} onChange={(e) => setEmail2(e.target.value)} required/>
+                      <FaMicrophone
+                        className="mic-icon"
+                        onClick={() => iniciarEscuchaParaCampo('email2')}
+                        size={23}
+                        style={{ color: micActivo === 'email2' ? 'red' : 'black' }}
+                      />
+                    </div>
+                      <button type="submit">Enviar Código</button>
                   </form>
                   <p onClick={goBackToLogin} style={{ cursor: 'pointer', marginTop: '10px' }}>Volver a Iniciar Sesión</p>
                 </div> ):( 
               <div>
                 <h5>Iniciar sesión</h5>
                 <form onSubmit={handleLogin}>
-                  <input type="email" placeholder="Ej.: ejemplo@mail.com" required />
-                  <input type="password" placeholder="Contraseña" required />
+                  <div className="form-field">
+                    <input
+                      type="email"
+                      placeholder="Ingresa tu correo"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <FaMicrophone
+                      className="mic-icon"
+                      onClick={() => iniciarEscuchaParaCampo('email')}
+                      size={23}
+                      style={{ color:  micActivo === 'email' ? 'red' : 'black' }}
+                    />
+                  </div>
+                  <div className="form-field">
+                    <input
+                      type="password"
+                      placeholder="Contraseña"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <FaMicrophone
+                      className="mic-icon"
+                      onClick={() => iniciarEscuchaParaCampo('password')}
+                      size={23}
+                      style={{ color: micActivo === 'password' ? 'red' : 'black' }}
+                    />
+                  </div>
                   <div className="terminos">
                     <input type="checkbox" required /> He leído y acepto los 
                     <a href="/terms">Términos y Condiciones</a>

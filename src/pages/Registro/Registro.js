@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Registro.css';
+import {FaMicrophone } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 function Registro() {
@@ -9,13 +10,58 @@ function Registro() {
     const [dni, setDni] = useState('');
     const [correo, setCorreo] = useState('');
     const [contrasena, setContrasena] = useState('');
+    const [escuchando, setEscuchando] = useState(false);
+    const [micActivo, setMicActivo] = useState('');
+
     const navigate = useNavigate();
+
+    // Configuración de reconocimiento de voz
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const reconocimiento = new SpeechRecognition();
+
+    reconocimiento.continuous = false;
+    reconocimiento.lang = "es-ES";
+    reconocimiento.interimResults = false;
+    reconocimiento.maxAlternatives = 1;
+
+    const iniciarEscuchaParaCampo = (campo) => {
+        setMicActivo(campo);
+        setEscuchando(true);
+        reconocimiento.start();
+
+        reconocimiento.onresult = (event) => {
+            let transcript = event.results[0][0].transcript;
+            transcript= transcript.replace(' arroba ', '@');
+            // Asignar el texto reconocido al campo correcto
+            if (campo === 'nombre') setNombre(transcript);
+            else if (campo === 'apellido') setApellido(transcript);
+            else if (campo === 'telefono') setTelefono(transcript);
+            else if (campo === 'dni') setDni(transcript);
+            else if (campo === 'correo') setCorreo(transcript);
+            else if (campo === 'contrasena') setContrasena(transcript);
+
+            setEscuchando(false);
+            setMicActivo('');
+        };
+    };
+
+    reconocimiento.onspeechend = () => {
+        reconocimiento.stop();
+        setEscuchando(false);
+        setMicActivo('');
+    };
+
+    reconocimiento.onerror = (event) => {
+        console.error("Error al reconocer la voz: ", event.error);
+        setEscuchando(false);
+        setMicActivo('');
+    };
 
     const handleLogin = (e) => {
         e.preventDefault();
         localStorage.setItem('userSession', 'active');
         navigate('/perfil');
-      };
+    };
 
     return (
         <div className='registro-page'>
@@ -29,7 +75,12 @@ function Registro() {
                             value={nombre} 
                             onChange={(e) => setNombre(e.target.value)} 
                         />
-                        <span className='icono-microfono'>🎤</span>
+                        <FaMicrophone
+                            className="mic-icon"
+                            onClick={() => iniciarEscuchaParaCampo('nombre')}
+                            size={23}
+                            style={{ color:  micActivo === 'nombre' ? 'red' : 'black' }}
+                        />
                     </div>
                 </div>
 
@@ -41,7 +92,12 @@ function Registro() {
                             value={apellido} 
                             onChange={(e) => setApellido(e.target.value)} 
                         />
-                        <span className='icono-microfono'>🎤</span>
+                        <FaMicrophone
+                            className="mic-icon"
+                            onClick={() => iniciarEscuchaParaCampo('apellido')}
+                            size={23}
+                            style={{ color:  micActivo === 'apellido' ? 'red' : 'black' }}
+                        />
                     </div>
                 </div>
 
@@ -53,7 +109,12 @@ function Registro() {
                             value={telefono} 
                             onChange={(e) => setTelefono(e.target.value)} 
                         />
-                        <span className='icono-microfono'>🎤</span>
+                        <FaMicrophone
+                            className="mic-icon"
+                            onClick={() => iniciarEscuchaParaCampo('telefono')}
+                            size={23}
+                            style={{ color:  micActivo === 'telefono' ? 'red' : 'black' }}
+                        />
                     </div>
                 </div>
 
@@ -65,7 +126,12 @@ function Registro() {
                             value={dni} 
                             onChange={(e) => setDni(e.target.value)} 
                         />
-                        <span className='icono-microfono'>🎤</span>
+                        <FaMicrophone
+                            className="mic-icon"
+                            onClick={() => iniciarEscuchaParaCampo('dni')}
+                            size={23}
+                            style={{ color:  micActivo === 'dni' ? 'red' : 'black' }}
+                        />
                     </div>
                 </div>
 
@@ -77,7 +143,12 @@ function Registro() {
                             value={correo} 
                             onChange={(e) => setCorreo(e.target.value)} 
                         />
-                        <span className='icono-microfono'>🎤</span>
+                        <FaMicrophone
+                            className="mic-icon"
+                            onClick={() => iniciarEscuchaParaCampo('correo')}
+                            size={23}
+                            style={{ color:  micActivo === 'correo' ? 'red' : 'black' }}
+                        />
                     </div>
                 </div>
 
@@ -89,7 +160,12 @@ function Registro() {
                             value={contrasena} 
                             onChange={(e) => setContrasena(e.target.value)} 
                         />
-                        <span className='icono-microfono'>🎤</span>
+                        <FaMicrophone
+                            className="mic-icon"
+                            onClick={() => iniciarEscuchaParaCampo('contrasena')}
+                            size={23}
+                            style={{ color:  micActivo === 'contrasena' ? 'red' : 'black' }}
+                        />
                     </div>
                 </div>
 
