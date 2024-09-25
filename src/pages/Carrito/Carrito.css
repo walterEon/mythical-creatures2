@@ -1,4 +1,33 @@
 .carrito-page h1{
   text-align: center;
   margin-top: 15px;
+  
 }
+
+.cabecera-carrito{
+  padding: 10px;
+}
+
+.cabecera-carrito p{
+  padding-left: 20px;
+}
+
+.cuerpo-carrito{
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.productos-carrito{
+  width: 60%;
+}
+
+.datos-compra{
+  width: 40%;
+  margin-left: 50px;
+}
+
+
+
+

@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar.js';
 import Categoria from './pages/Categoria/Categoria.js';
 import AccessibilityButton from './components/AccessibilityButton/AccessibilityButton.js';
 import ProductoInfo from './pages/ProductoInfo/ProductoInfo.js';
+import Compra from './pages/Compra/Compra.js';
 import Footer from './components/Footer/Footer.js';
 import './App.css';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path='/perfil' element={<Perfil />} />
             <Route path='/registro' element={<Registro />} />
             <Route path='/carrito' element={<Carrito />} />
+            <Route path='/compra' element={<Compra />} />
           </Routes>
         </div>
         <Footer />

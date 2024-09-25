@@ -328,7 +328,7 @@ function Navbar() {
           type="text"
           placeholder="Buscar alimentos gourmet..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleSearchChange}
         />
         <FaMicrophone
           className="mic-icon"
