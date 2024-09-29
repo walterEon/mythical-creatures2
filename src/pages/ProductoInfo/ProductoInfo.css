@@ -9,7 +9,7 @@
   
   .producto-info-container {
     display: flex;
-    background-color: #ffedcc;
+    background-color: #fef4b1;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -19,7 +19,7 @@
 
   .producto-info-container-c {
     display: flex;
-    background-color: #ffedcc;
+    background-color: #fef4b1;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -113,16 +113,18 @@
   .buttons button {
     padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
   }
   
-  .buttons button:first-of-type {
-    background-color: #ccc;
-  }
-  
-  .buttons button:last-of-type {
-    background-color: #d4462f;
+  .buttons button {
+    background-color: #59402f;
     color: white;
   }
+  
+  .buttons button:hover{
+    background-color: #896954;
+  }
+
   

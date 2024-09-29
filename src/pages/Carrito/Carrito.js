@@ -50,7 +50,26 @@ function Carrito() {
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
         setCartItems(storedCart);
-      }, []);
+      }, [cartItems]);
+
+      const updateCart = (updatedCart) => {
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+        setCartItems(updatedCart);
+      };
+    
+      const addItem = (product) => {
+        const updatedCart = cartItems.map(item => 
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+        updateCart(updatedCart);
+      };
+    
+      const removeItem = (product) => {
+        const updatedCart = cartItems.map(item => 
+          item.id === product.id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+        ).filter(item => item.quantity > 0);
+        updateCart(updatedCart);
+      };
 
     return(
         <div className='carrito-page'>
@@ -70,9 +89,9 @@ function Carrito() {
                     <div>
                       <p>{item.name}</p>
                       <div className="item-quantity">
-                        <button>-</button>
+                        <button onClick={() => removeItem(item)}>-</button>
                         <span>{item.quantity}</span>
-                        <button>+</button>
+                        <button onClick={() => addItem(item)}>+</button>
                       </div>
                       <p>S/ {item.price * item.quantity}</p>
                     </div>

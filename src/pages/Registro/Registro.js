@@ -65,113 +65,120 @@ function Registro() {
 
     return (
         <div className='registro-page'>
-            <h1>Regístrate con nosotros</h1>
-            <div className='form-container'>
-                <div className='form-section'>
-                    <label>Nombres:</label>
-                    <div className='input-with-icon'>
-                        <input 
-                            type='text' 
-                            value={nombre} 
-                            onChange={(e) => setNombre(e.target.value)} 
-                        />
-                        <FaMicrophone
-                            className="mic-icon"
-                            onClick={() => iniciarEscuchaParaCampo('nombre')}
-                            size={23}
-                            style={{ color:  micActivo === 'nombre' ? 'red' : 'black' }}
-                        />
-                    </div>
+    <h1>Regístrate con nosotros</h1>
+    <div className='form-container'>
+        <div className='form-grid'>
+            <div className='form-section'>
+                <label>Nombres:</label>
+                <div className='input-with-icon'>
+                    <input 
+                        type='text' 
+                        value={nombre} 
+                        onChange={(e) => setNombre(e.target.value)} 
+                    />
+                    <FaMicrophone
+                        className="mic-icon"
+                        onClick={() => iniciarEscuchaParaCampo('nombre')}
+                        size={23}
+                        style={{ color:  micActivo === 'nombre' ? 'red' : 'black' }}
+                    />
                 </div>
+            </div>
 
-                <div className='form-section'>
-                    <label>Apellidos:</label>
-                    <div className='input-with-icon'>
-                        <input 
-                            type='text' 
-                            value={apellido} 
-                            onChange={(e) => setApellido(e.target.value)} 
-                        />
-                        <FaMicrophone
-                            className="mic-icon"
-                            onClick={() => iniciarEscuchaParaCampo('apellido')}
-                            size={23}
-                            style={{ color:  micActivo === 'apellido' ? 'red' : 'black' }}
-                        />
-                    </div>
+            <div className='form-section'>
+                <label>Apellidos:</label>
+                <div className='input-with-icon'>
+                    <input 
+                        type='text' 
+                        value={apellido} 
+                        onChange={(e) => setApellido(e.target.value)} 
+                    />
+                    <FaMicrophone
+                        className="mic-icon"
+                        onClick={() => iniciarEscuchaParaCampo('apellido')}
+                        size={23}
+                        style={{ color:  micActivo === 'apellido' ? 'red' : 'black' }}
+                    />
                 </div>
+            </div>
 
-                <div className='form-section'>
-                    <label>Teléfono:</label>
-                    <div className='input-with-icon'>
-                        <input 
-                            type='text' 
-                            value={telefono} 
-                            onChange={(e) => setTelefono(e.target.value)} 
-                        />
-                        <FaMicrophone
-                            className="mic-icon"
-                            onClick={() => iniciarEscuchaParaCampo('telefono')}
-                            size={23}
-                            style={{ color:  micActivo === 'telefono' ? 'red' : 'black' }}
-                        />
-                    </div>
+            <div className='form-section'>
+                <label>Teléfono:</label>
+                <div className='input-with-icon'>
+                    <input 
+                        type='text' 
+                        value={telefono} 
+                        onChange={(e) => setTelefono(e.target.value)} 
+                    />
+                    <FaMicrophone
+                        className="mic-icon"
+                        onClick={() => iniciarEscuchaParaCampo('telefono')}
+                        size={23}
+                        style={{ color:  micActivo === 'telefono' ? 'red' : 'black' }}
+                    />
                 </div>
+            </div>
 
-                <div className='form-section'>
-                    <label>DNI:</label>
-                    <div className='input-with-icon'>
-                        <input 
-                            type='text' 
-                            value={dni} 
-                            onChange={(e) => setDni(e.target.value)} 
-                        />
-                        <FaMicrophone
-                            className="mic-icon"
-                            onClick={() => iniciarEscuchaParaCampo('dni')}
-                            size={23}
-                            style={{ color:  micActivo === 'dni' ? 'red' : 'black' }}
-                        />
-                    </div>
+            <div className='form-section'>
+                <label>DNI:</label>
+                <div className='input-with-icon'>
+                    <input 
+                        type='text' 
+                        value={dni} 
+                        onChange={(e) => setDni(e.target.value)} 
+                    />
+                    <FaMicrophone
+                        className="mic-icon"
+                        onClick={() => iniciarEscuchaParaCampo('dni')}
+                        size={23}
+                        style={{ color:  micActivo === 'dni' ? 'red' : 'black' }}
+                    />
                 </div>
+            </div>
 
-                <div className='form-section'>
-                    <label>Correo:</label>
-                    <div className='input-with-icon'>
-                        <input 
-                            type='email' 
-                            value={correo} 
-                            onChange={(e) => setCorreo(e.target.value)} 
-                        />
-                        <FaMicrophone
-                            className="mic-icon"
-                            onClick={() => iniciarEscuchaParaCampo('correo')}
-                            size={23}
-                            style={{ color:  micActivo === 'correo' ? 'red' : 'black' }}
-                        />
-                    </div>
+            <div className='form-section'>
+                <label>Correo:</label>
+                <div className='input-with-icon'>
+                    <input 
+                        type='email' 
+                        value={correo} 
+                        onChange={(e) => setCorreo(e.target.value)} 
+                    />
+                    <FaMicrophone
+                        className="mic-icon"
+                        onClick={() => iniciarEscuchaParaCampo('correo')}
+                        size={23}
+                        style={{ color:  micActivo === 'correo' ? 'red' : 'black' }}
+                    />
                 </div>
+            </div>
 
-                <div className='form-section'>
-                    <label>Contraseña:</label>
-                    <div className='input-with-icon'>
-                        <input 
-                            type='password' 
-                            value={contrasena} 
-                            onChange={(e) => setContrasena(e.target.value)} 
-                        />
-                        <FaMicrophone
-                            className="mic-icon"
-                            onClick={() => iniciarEscuchaParaCampo('contrasena')}
-                            size={23}
-                            style={{ color:  micActivo === 'contrasena' ? 'red' : 'black' }}
-                        />
-                    </div>
+            <div className='form-section'>
+                <label>Contraseña:</label>
+                <div className='input-with-icon'>
+                    <input 
+                        type='password' 
+                        value={contrasena} 
+                        onChange={(e) => setContrasena(e.target.value)} 
+                    />
+                    <FaMicrophone
+                        className="mic-icon"
+                        onClick={() => iniciarEscuchaParaCampo('contrasena')}
+                        size={23}
+                        style={{ color:  micActivo === 'contrasena' ? 'red' : 'black' }}
+                    />
                 </div>
-
-                <button className='submit-button' onClick={handleLogin}>Registrarse</button>
             </div>
         </div>
+        <button className='submit-button' onClick={handleLogin}>Registrarse</button>
+    </div>
+    {escuchando && (
+        <div className="mic-popup">
+            <p>Te estamos escuchando...</p>
+        </div>
+    )}
+</div>
+
     );
 }
 

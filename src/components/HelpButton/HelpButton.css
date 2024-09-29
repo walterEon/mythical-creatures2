@@ -1,0 +1,75 @@
+.help-button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .help-button-container span {
+    font-size: 20px;
+  }
+  
+  .help-button {
+    border: none;
+  border-radius: 50%;
+  background-color: white;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .help-button:focus {
+    outline: 2px solid #0056b3;
+  }
+  
+  .help-menu {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 250px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1001;
+  }
+  
+  .help-menu h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .help-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .help-menu ul li {
+    margin-bottom: 10px;
+  }
+  
+  .help-menu ul li a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .help-menu ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .close-button {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .close-button:focus {
+    outline: 2px solid #d9534f;
+  }
+  

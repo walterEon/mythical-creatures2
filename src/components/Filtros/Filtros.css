@@ -1,7 +1,7 @@
 .filtros {
     width: 250px;
     padding: 20px;
-    background-color: #f9f9f9;
+    
     border-right: 1px solid #ddd;
 }
 
@@ -22,3 +22,63 @@
     border-radius: 4px; 
     font-size: 14px; 
 }
+
+/* Estilo general del rango */
+input[type="range"] {
+    -webkit-appearance: none; /* Elimina los estilos predeterminados */
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    background: #ddd; /* Color predeterminado para la barra */
+    position: relative;
+}
+
+/* Estilo de la barra en navegadores WebKit (Chrome, Safari, Opera) */
+input[type="range"]::-webkit-slider-runnable-track {
+    background: transparent; /* Dejar transparente para el uso de background dinámico */
+    height: 8px;
+    border-radius: 5px;
+}
+
+/* Estilo del control deslizante (la "bolita") */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; /* Tamaño de la bolita */
+    height: 20px;
+    background: #59402f; /* Color de la bolita */
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    margin-top: -6px; /* Ajusta la posición vertical */
+}
+
+/* Estilo del control deslizante en Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #59402f; /* Color de la bolita */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Ajustar el relleno inicial en el extremo izquierdo */
+input[type="range"]::-webkit-slider-thumb {
+    margin-left: -10px; /* Ajuste para centrar la bolita en el extremo izquierdo */
+}
+
+/* Estilo para asegurar que la bolita toque el extremo derecho */
+input[type="range"]::-webkit-slider-thumb:after {
+    content: '';
+    position: absolute;
+    right: -10px; /* Ajuste para que la bolita toque el extremo derecho */
+}
+
+
+
+
+

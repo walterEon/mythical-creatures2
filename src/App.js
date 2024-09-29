@@ -12,6 +12,7 @@ import Compra from './pages/Compra/Compra.js';
 import Footer from './components/Footer/Footer.js';
 import ProcesandoPedido from './pages/ProcesandoPedido/ProcesandoPedido.js';
 import PedidoExito from './pages/PedidoExito/PedidoExito.js';
+import HelpButton from './components/HelpButton/HelpButton.js';
 import './App.css';
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
 
         {/* Botón de accesibilidad */}
         <AccessibilityButton />
+
+        <HelpButton />
       </div>
     </>
   );

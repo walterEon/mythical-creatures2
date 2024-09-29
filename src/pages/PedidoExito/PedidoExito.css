@@ -75,7 +75,7 @@
     display: block;
     margin: 30px auto;
     padding: 10px 30px;
-    background-color: #4CAF50;
+    background-color: #59402f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -86,7 +86,7 @@
   }
   
   .boton-continuar:hover {
-    background-color: #45a049;
+    background-color: #896954;
   }
   
   .boton-continuar:focus {

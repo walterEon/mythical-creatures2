@@ -1,41 +1,67 @@
-/* Estilo general de la página */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 .registro-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow-y: auto;
+    max-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
 }
 
-/* Título */
 h1 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #000;
     font-weight: bold;
+    text-align: center;
 }
 
-/* Contenedor del formulario */
 .form-container {
     background-color: #59402f;
     border-radius: 15px;
     padding: 20px;
-    width: 400px;
+    width: auto;
+    height: auto;
+    max-height: 80vh;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
-/* Estilos generales para las secciones del formulario */
+/* Usar grid para el formulario */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna en dispositivos pequeños */
+    gap: 15px; /* Espacio entre los campos */
+}
+
+@media (min-width: 600px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en dispositivos más grandes */
+    }
+}
+
 .form-section {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-section label {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: white;
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el campo */
 }
 
-/* Contenedor del input y el ícono de micrófono */
+/* Ajustar el diseño del input con el ícono */
 .input-with-icon {
     display: flex;
     align-items: center;
@@ -77,5 +103,12 @@ h1 {
 
 .submit-button:hover {
     background-color: #93683d;
-    color: white;
 }
+
+/* Ocultar scrollbar de la página principal */
+.registro-page::-webkit-scrollbar {
+    display: none;
+}
+
+
+

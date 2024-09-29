@@ -10,6 +10,7 @@ import manzanas from '../../pages/Categoria/manzanas.jpg';
 function Navbar() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false); // Popup de éxito
+  const [isAddSuccessPopupOpen, setIsAddSuccessPopupOpen] = useState(false); // Popup de éxito
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -118,6 +119,10 @@ function Navbar() {
     setShowForgot(false);  // Regresar al formulario de login
   };
 
+  const closeAddSuccessPopup = () => {
+    setIsAddSuccessPopupOpen(false); // Cierra el popup de éxito
+  };
+
   useEffect(() => {
     console.log('carga navbar');
     const userSession = localStorage.getItem('userSession');
@@ -215,6 +220,25 @@ function Navbar() {
     setItemToDelete(null);
   };
 
+  const updateCart = (updatedCart) => {
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setCartItems(updatedCart);
+  };
+
+  const addItem = (product) => {
+    const updatedCart = cartItems.map(item => 
+      item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    updateCart(updatedCart);
+  };
+
+  const removeItem = (product) => {
+    const updatedCart = cartItems.map(item => 
+      item.id === product.id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+    ).filter(item => item.quantity > 0);
+    updateCart(updatedCart);
+  };
+
   const closeSuccessPopup = () => {
     setIsSuccessPopupOpen(false); // Cierra el popup de éxito
   };
@@ -235,7 +259,8 @@ function Navbar() {
     }
   
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${product.name} ha sido agregado al carrito`);
+    setIsAddSuccessPopupOpen(true);
+    playSound('successSound');
   };
 
   const handleSearchChange = (e) => {
@@ -327,7 +352,7 @@ function Navbar() {
         <img src={logo} onClick={goHome} alt="Mythical Gourmet" />
       </div>
 
-      <div className="navbar-search">
+      <div className="navbar-search" onMouseLeave={() => setIsSearchOpen(false)}>
         <FaSearch className="search-icon" />
         <input
           type="text"
@@ -341,6 +366,7 @@ function Navbar() {
           size={23}
           style={{ color: micActivo === 'search' ? 'red' : 'black' }}
         />
+        
         {searchResults.length > 0 && isSearchOpen && <SearchResults />}
       </div>
 
@@ -370,9 +396,9 @@ function Navbar() {
                     <div>
                       <p>{item.name}</p>
                       <div className="item-quantity">
-                        <button>-</button>
+                        <button onClick={() => removeItem(item)}>-</button>
                         <span>{item.quantity}</span>
-                        <button>+</button>
+                        <button onClick={() => addItem(item)}>+</button>
                       </div>
                       <p>S/ {item.price * item.quantity}</p>
                     </div>
@@ -458,7 +484,7 @@ function Navbar() {
                     <input type="checkbox" required /> He leído y acepto los 
                     <a href="/terms">Términos y Condiciones</a>
                   </div>
-                  <p>¿Aún no tienes una cuenta? <a href='/registro'>Regístrate</a> </p>
+                  <p>¿Aún no tienes una cuenta? <a  href='/registro'>Regístrate</a> </p>
                   <p onClick={forgotPassword} className='forgot-link'>Olvidé mi contraseña </p>
                   <button type="submit">ENTRAR</button>
                 </form>
@@ -476,6 +502,16 @@ function Navbar() {
             <h2>¡Éxito!</h2>
             <p>Ha iniciado sesión exitosamente.</p>
             <button onClick={closeSuccessPopup}>OK</button>
+          </div>
+        </div>
+      )}
+
+{isAddSuccessPopupOpen && (
+        <div className="logout-popup">
+          <div className="popup-content-p">
+            <h2>¡Éxito!</h2>
+            <p>Su producto ha sido añadido al carrito.</p>
+            <button onClick={closeAddSuccessPopup}>OK</button>
           </div>
         </div>
       )}
@@ -500,6 +536,11 @@ function Navbar() {
           </div>
         </div>
       )}
+      {escuchando && (
+          <div className="mic-popup">
+            <p>Te estamos escuchando...</p>
+          </div>
+        )}
       <SoundPlayer ref={soundPlayerRef} />
     </div>
   );

@@ -12,82 +12,24 @@ const Filtros = ({ onFilterChange, cat }) => {
         onFilterChange(newFilters);
     };
 
-    // const productosMitologicos = [
-    //     {
-    //         id: 1,
-    //         image: galletas,
-    //         name: 'Galletas de Estrella de Mar para Sirenas',
-    //         description: 'Galletas crujientes hechas con algas y polvo de perlas, especialmente formuladas para las sirenas amantes de los sabores marinos.',
-    //         price: 25.00,
-    //         discount: 0,
-    //         categoria: 'gourmet',
-    //         subCategoria: 'galletas',
-    //         marca: 'OceanTreats',
-    //         tipoProducto: 'pack'
-    //     },
-    //     {
-    //         id: 2,
-    //         image: manzanas,
-    //         name: 'Manzanas Doradas para Pegasos',
-    //         description: 'Manzanas bañadas en miel dorada, ricas en energía celestial para Pegasos que necesitan volar largas distancias.',
-    //         price: 45.00,
-    //         discount: 5,
-    //         categoria: 'gourmet',
-    //         subCategoria: 'frutas',
-    //         marca: 'SkyFeast',
-    //         tipoProducto: 'bolsa'
-    //     },
-    //     {
-    //         id: 3,
-    //         image: piedras,
-    //         name: 'Piedras de Lava para Dragones',
-    //         description: 'Bocadillos de roca volcánica enriquecidos con especias de fuego, diseñados para satisfacer el apetito feroz de los dragones.',
-    //         price: 100.00,
-    //         discount: 15,
-    //         categoria: 'gourmet',
-    //         subCategoria: 'minerales',
-    //         marca: 'FlameFeast',
-    //         tipoProducto: 'bloque'
-    //     },
-    //     {
-    //         id: 4,
-    //         image: hierba,
-    //         name: 'Hierba Lunar para Unicornios',
-    //         description: 'Exquisita hierba cultivada bajo la luz de la luna llena, perfecta para unicornios que buscan nutrir su magia.',
-    //         price: 80.00,
-    //         discount: 20,
-    //         categoria: 'gourmet',
-    //         subCategoria: 'forraje',
-    //         marca: 'MoonMeadow',
-    //         tipoProducto: 'paca'
-    //     },
-    //     {
-    //         id: 5,
-    //         image: nectar,
-    //         name: 'Néctar Floral para Hadas',
-    //         description: 'Mezcla premium de néctares florales, llena de vitalidad mágica para mantener a las hadas volando felices todo el día.',
-    //         price: 30.00,
-    //         discount: 10,
-    //         categoria: 'gourmet',
-    //         subCategoria: 'bebida',
-    //         marca: 'FairyFeast',
-    //         tipoProducto: 'botella'
-    //     },
-    //     {
-    //         id: 6,
-    //         image: raices,
-    //         name: 'Raíces Místicas para Grifos',
-    //         description: 'Raíces mágicas con alto contenido en minerales, diseñadas para fortalecer el vigor y la majestuosidad de los grifos.',
-    //         price: 90.00,
-    //         discount: 12,
-    //         categoria: 'gourmet',
-    //         subCategoria: 'forraje',
-    //         marca: 'GriffinBites',
-    //         tipoProducto: 'raíz'
-    //     }
-    // ];
+    const handleRangeChange = (e) => {
+        const newValue = e.target.value;
+        const newRangoPrecio = [0, newValue];
+        setRangoPrecio(newRangoPrecio);
 
-    
+        // Establece el fondo del control de rango dinámicamente
+        const range = e.target;
+        const value = ((newValue - range.min) / (range.max - range.min+20)) * 100;
+        range.style.background = `linear-gradient(to right, #59402f ${value}%, #ddd ${value}%)`;
+
+        handleFilterChange({ 
+            categoria, 
+            subCategoria, 
+            marca, 
+            tipoProducto, 
+            rangoPrecio: newRangoPrecio 
+        });
+    };
 
     return (
         <div className="filtros">
@@ -157,7 +99,6 @@ const Filtros = ({ onFilterChange, cat }) => {
                 </select>
             </div>
 
-
             <div className="filtro-section">
                 <h3>Rango de precio</h3>
                 <input 
@@ -165,17 +106,8 @@ const Filtros = ({ onFilterChange, cat }) => {
                     min="0" 
                     max="200" 
                     value={rangoPrecio[1]} 
-                    onChange={(e) => { 
-                        const newRangoPrecio = [0, e.target.value]; 
-                        setRangoPrecio(newRangoPrecio);
-                        handleFilterChange({ 
-                            categoria, 
-                            subCategoria, 
-                            marca, 
-                            tipoProducto, 
-                            rangoPrecio: rangoPrecio 
-                        });
-                    }}
+                    onChange={handleRangeChange}
+                    style={{ background: 'linear-gradient(to right, #59402f 30%, #ddd 30%)' }} // Estilo inicial
                 />
                 <p>S/ {rangoPrecio[0]} - S/ {rangoPrecio[1]}</p>
             </div>
@@ -184,3 +116,4 @@ const Filtros = ({ onFilterChange, cat }) => {
 };
 
 export default Filtros;
+

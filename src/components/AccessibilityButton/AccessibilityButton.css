@@ -1,6 +1,6 @@
 .accessibility-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   right: 20px;
   z-index: 1000;
 }
@@ -66,9 +66,10 @@
 }
 
 .accessibility-header h2 {
-  font-size: 18px;
+  font-size: 20px;
   margin: 0;
   color: #333;
+  font-weight: 1000;
 }
 
 .close-menu {
@@ -89,9 +90,29 @@
   margin-bottom: 15px;
 }
 
+.accessibility-option-r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
 .accessibility-option span {
   font-size: 14px;
   color: #333;
+}
+
+.accessibility-option-r button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.accessibility-option-r button:hover {
+  background-color: #0056b3;
 }
 
 .accessibility-option button {
@@ -190,6 +211,120 @@
   transform: translateY(-10px); /* Mueve ligeramente hacia arriba al desaparecer */
   pointer-events: none;
 }
+
+.monochromatic {
+  filter: grayscale(100%);
+}
+
+.reading-guide {
+  position: fixed;
+  width: 100px; /* Ancho de la línea */
+  height: 5px; /* Altura de la línea */
+  background-color: rgb(64, 64, 240); /* Color de la línea */
+  pointer-events: none; /* Permite que los clics pasen a través de la guía */
+  z-index: 9999; /* Asegura que esté por encima de otros elementos */
+  transition: left 0.05s ease, top 0.05s ease; /* Suaviza el movimiento */
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); /* Añade un ligero resplandor para mejorar la visibilidad */
+  border-radius: 5px;
+}
+
+.accessibility-profiles {
+  background-color: #f9f9f9; /* Color de fondo suave */
+  border: 1px solid #ddd; /* Borde ligero */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  max-width: 400px; /* Ancho máximo */
+  margin: 20px auto; /* Centrado en la página */
+}
+
+.accessibility-profiles h5 {
+  text-align: center; /* Título centrado */
+  color: #333; /* Color del texto */
+}
+
+.save-profile {
+  display: flex; /* Flexbox para alinear elementos */
+  justify-content: space-between; /* Espacio entre los elementos */
+  margin-bottom: 15px; /* Espacio inferior */
+  height: 40px;
+}
+
+.profile-input {
+  flex: 1; /* Toma todo el espacio disponible */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde ligero */
+  border-radius: 4px; /* Bordes redondeados */
+  margin-right: 10px; /* Espacio a la derecha */
+  width: 80%;
+}
+
+.save-button {
+  background-color: #4CAF50; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  cursor: pointer; /* Cursor tipo mano */
+  width: 20%;
+}
+
+.save-button:hover {
+  background-color: #45a049; /* Color al pasar el mouse */
+}
+
+.profile-list {
+  list-style: none; /* Sin puntos de lista */
+  padding: 0; /* Sin padding */
+}
+
+.profile-item {
+  display: flex; /* Flexbox para alinear elementos */
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center; /* Alinear verticalmente */
+  padding: 10px; /* Espaciado interno */
+  border-bottom: 1px solid #eee; /* Línea divisoria */
+}
+
+.profile-item:last-child {
+  border-bottom: none; /* Sin línea divisoria en el último elemento */
+}
+
+.profile-name {
+  flex: 1; /* Toma todo el espacio disponible */
+  color: #555; /* Color del texto */
+}
+
+.profile-actions {
+  display: flex; /* Flexbox para alinear botones */
+  gap: 10px; /* Espacio entre botones */
+}
+
+.load-button, .delete-button {
+  background-color: #2196F3; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 5px 10px; /* Espaciado interno */
+  cursor: pointer; /* Cursor tipo mano */
+}
+
+.delete-button {
+  background-color: #f44336; /* Color de fondo del botón de eliminar */
+}
+
+.load-button:hover {
+  background-color: #1976D2; /* Color al pasar el mouse */
+}
+
+.delete-button:hover {
+  background-color: #d32f2f; /* Color al pasar el mouse */
+}
+
+
+
+
+
 
 
 

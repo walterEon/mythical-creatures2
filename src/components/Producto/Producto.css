@@ -11,7 +11,7 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: red;
+    background-color: #59402f;
     color: white;
     padding: 5px 10px;
     border-radius: 10px;
@@ -36,12 +36,12 @@
 
 .producto-price {
     font-size: 16px;
-    color: #e60000;
+    color: #59402f;
     margin: 10px 0;
 }
 
 .producto-button {
-    background-color: #e60000;
+    background-color: #59402f;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -52,5 +52,5 @@
 }
 
 .producto-button:hover {
-    background-color: #b30000;
+    background-color: #896954;
 }

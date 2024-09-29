@@ -49,6 +49,68 @@ body.contrast-high .home-page h2{
   color: white;
 }
 
+body.contrast-high .filtros h2{
+   
+  color: white;
+}
+
+body.contrast-high .filtros h3{
+   
+  color: white;
+}
+
+body.contrast-high .producto-info-container{
+   background-color: black;
+   border: 1px solid white
+}
+
+body.contrast-high .producto-info-container-c{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .comentario-box{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .comentarios h3{
+  color: white;
+}
+
+body.contrast-high .cart-popup{
+  background-color: black;
+}
+
+body.contrast-high .cart-popup h3{
+ color: white;
+}
+
+body.contrast-high .cart-popup .close-btn{
+  color: white;
+ }
+
+ body.contrast-high .item-quantity button{
+  color: white;
+ }
+
+ body.contrast-high .cart-summary{
+  background-color: black;
+}
+
+body.contrast-high .search-results{
+  background-color: black;
+}
+
+body.contrast-high .search-result-item{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .mic-icon{
+  color: black;
+}
+
 
 
 body.contrast-high .producto h2{
@@ -56,10 +118,65 @@ body.contrast-high .producto h2{
   color: white;
 }
 
-body.contrast-high .mic-icon{
+body.contrast-high .carrito-page h1{
    
-  color: white !important;
+  color: white;
 }
+
+body.contrast-high .datos-compra{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .compra-page h1{
+   
+  color: white;
+}
+
+body.contrast-high .form-identificacion{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .form-entrega{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .form-pago{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .resumen-compra{
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+body.contrast-high .compra-page h3{
+   
+  color: white;
+}
+
+body.contrast-high .pedido-exito-container{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .pedido-exito-container h2{
+  color: white;
+}
+
+body.contrast-high .detalles-pedido{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .detalles-pedido h3{
+  color: white;
+}
+
 
 body.contrast-high h5{
   

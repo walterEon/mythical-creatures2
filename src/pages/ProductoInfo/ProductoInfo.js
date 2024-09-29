@@ -8,6 +8,8 @@ import hierba from '../Categoria/hierba.jpg';
 import nectar from '../Categoria/nectar.jpg';
 import raices from '../Categoria/raices.jpg';  
 import { FaRegUserCircle } from "react-icons/fa";
+import { useState, useRef } from 'react';
+import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
 
 const productosMitologicos = [
     {
@@ -86,7 +88,21 @@ const productosMitologicos = [
 
 function ProductoInfo() {
   const { id } = useParams();  // Obtener el ID del producto desde la URL
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false); // Popup de éxito
+
   const navigate = useNavigate();
+
+  const soundPlayerRef = useRef(null);
+
+    const playSound = (soundName) => {
+      if (soundPlayerRef.current) {
+        soundPlayerRef.current.playSound(soundName);
+      }
+    };
+
+    const closeSuccessPopup = () => {
+        setIsSuccessPopupOpen(false); // Cierra el popup de éxito
+      };
   
   const producto = productosMitologicos.find(p => p.id === parseInt(id));  // Buscar producto por ID
   
@@ -105,7 +121,8 @@ function ProductoInfo() {
         }
       
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert(`${producto.name} ha sido agregado al carrito`);
+        setIsSuccessPopupOpen(true);
+        playSound('successSound');
   };
 
   return (
@@ -156,6 +173,16 @@ function ProductoInfo() {
         {/* Añadir más comentarios aquí */}
       </div>
     </div>
+    {isSuccessPopupOpen && (
+        <div className="logout-popup">
+          <div className="popup-content-p">
+            <h2>¡Éxito!</h2>
+            <p>Su producto ha sido añadido al carrito.</p>
+            <button onClick={closeSuccessPopup}>OK</button>
+          </div>
+        </div>
+      )}
+      <SoundPlayer ref={soundPlayerRef} />
     </div>
   );
 }
