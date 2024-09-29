@@ -141,11 +141,18 @@ function Navbar() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    localStorage.setItem('userSession', 'active');
-    setIsLoggedIn(true);
-    setIsPopupOpen(false);
-    setIsSuccessPopupOpen(true); // Mostrar popup de éxito
-    playSound('successSound');
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+    
+    if (user) {
+      localStorage.setItem('userSession', JSON.stringify(user));
+      setIsLoggedIn(true);
+      setIsPopupOpen(false);
+      setIsSuccessPopupOpen(true);
+      playSound('successSound');
+    } else {
+      alert('Invalid email or password');
+    }
   };
 
   const handleLogout = () => {

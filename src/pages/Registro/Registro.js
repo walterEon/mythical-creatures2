@@ -57,11 +57,36 @@ function Registro() {
         setMicActivo('');
     };
 
-    const handleLogin = (e) => {
+    const handleRegistration = (e) => {
         e.preventDefault();
-        localStorage.setItem('userSession', 'active');
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        
+        if (users.some(user => user.email === correo)) {
+          alert('An account with this email already exists');
+          return;
+        }
+        
+        const newUser = {
+          nombre,
+          apellido,
+          telefono,
+          dni,
+          email: correo,
+          password: contrasena
+        };
+        
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('userSession', JSON.stringify(newUser));
+        
         navigate('/perfil');
-    };
+      };
+
+    // Replace the existing handleLogin function in Registro.js with this:
+const handleLogin = (e) => {
+    e.preventDefault();
+    handleRegistration(e);
+  };
 
     return (
         <div className='registro-page'>

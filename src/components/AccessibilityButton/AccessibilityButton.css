@@ -12,10 +12,12 @@
   padding: 10px;
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .accessibility-btn:hover {
-  background-color: none;
+  background-color: rgb(207, 187, 187);
+  transform: scale(1.1);
 }
 
 .accessibility-menu {
