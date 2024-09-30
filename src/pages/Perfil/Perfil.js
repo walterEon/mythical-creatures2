@@ -2,16 +2,69 @@ import React, { useState, useEffect } from 'react';
 import './Perfil.css';
 
 function Perfil() {
-  const [selectedSection, setSelectedSection] = useState('perfil'); // Estado inicial
-  const [orders, setOrders] = useState([]); // Estado para almacenar los pedidos
+  const [selectedSection, setSelectedSection] = useState('perfil');
+  const [orders, setOrders] = useState([]);
+  const [userData, setUserData] = useState(null);
+  
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  // Obtener los pedidos desde localStorage al cargar el componente
   useEffect(() => {
+    // Fetch user data from localStorage
+    const userSession = JSON.parse(localStorage.getItem('userSession'));
+    if (userSession) {
+      setUserData(userSession);
+    }
+
+    // Fetch orders from localStorage
     const storedOrders = localStorage.getItem('orders');
     if (storedOrders) {
-      setOrders(JSON.parse(storedOrders)); // Convertir de string a objeto
+      setOrders(JSON.parse(storedOrders));
     }
   }, []);
+
+  const handlePasswordChange = () => {
+    if (!newPassword || !confirmPassword) {
+      setMessage('Por favor complete ambos campos.');
+      return;
+    }
+
+    // Validar que las contraseñas coincidan
+    if (newPassword !== confirmPassword) {
+      setMessage('Las contraseñas no coinciden.');
+      return;
+    }
+
+    // Obtener la lista de usuarios del localStorage
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Encontrar el usuario en la lista usando el email del userSession
+    const userSession = JSON.parse(localStorage.getItem('userSession'));
+    const updatedUsers = users.map((user) => {
+      if (user.email === userSession.email) {
+        return { ...user, password: newPassword }; // Actualizar la contraseña
+      }
+      return user;
+    });
+
+    // Actualizar la lista de usuarios en localStorage
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+
+    // Actualizar la contraseña del usuario en userSession también
+    const updatedUserSession = { ...userSession, password: newPassword };
+    localStorage.setItem('userSession', JSON.stringify(updatedUserSession));
+
+    // Actualizar el estado de userData
+    setUserData(updatedUserSession);
+
+    // Mostrar mensaje de éxito
+    setMessage('Contraseña actualizada con éxito.');
+
+    // Limpiar campos
+    setNewPassword('');
+    setConfirmPassword('');
+  };
 
   const renderContent = () => {
     switch (selectedSection) {
@@ -19,45 +72,38 @@ function Perfil() {
         return (
           <div>
             <h2>Mi perfil</h2>
-            <div className='form-perfil'>
-              <div className='form-section'>
-                <label>Nombres</label>
-                <input type='text' value='Renzo Giovanni' disabled></input>
-              </div>
-
-              <div className='form-section'>
-                <label>Apellidos</label>
-                <input type='text' value='López Murillo' disabled></input>
-              </div>
-            </div>
-
-            <div className='form-perfil'>
-              <div className='form-section'>
-                <label>DNI</label>
-                <input type='text' value='76158923' disabled></input>
-              </div>
-            </div>
-
-            <div className='form-perfil'>
-              <div className='form-section'>
-                <label>Fecha de nacimiento</label>
-                <input type='date' value='' disabled></input>
-              </div>
-            </div>
-
-            <div className='form-perfil'>
-              <div className='form-section'>
-                <label>Email</label>
-                <input type='text' value='rlopez@gmail.com' disabled></input>
-              </div>
-            </div>
-
-            <div className='form-perfil'>
-              <div className='form-section'>
-                <label>Celular</label>
-                <input type='text' value='945342164' disabled></input>
-              </div>
-            </div>
+            {userData && (
+              <>
+                <div className='form-perfil'>
+                  <div className='form-section'>
+                    <p>Nombres</p>
+                    <input type='text' value={userData.nombre || ''} disabled />
+                  </div>
+                  <div className='form-section'>
+                    <p>Apellidos</p>
+                    <input type='text' value={userData.apellido || ''} disabled />
+                  </div>
+                </div>
+                <div className='form-perfil'>
+                  <div className='form-section'>
+                    <p>DNI</p>
+                    <input type='text' value={userData.dni || ''} disabled />
+                  </div>
+                </div>
+                <div className='form-perfil'>
+                  <div className='form-section'>
+                    <p>Celular</p>
+                    <input type='text' value={userData.telefono || ''} disabled />
+                  </div>
+                </div>
+                <div className='form-perfil'>
+                  <div className='form-section'>
+                    <p>Email</p>
+                    <input type='text' value={userData.email || ''} disabled />
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         );
       case 'pedidos':
@@ -86,18 +132,28 @@ function Perfil() {
             <h2>Cambiar contraseña</h2>
             <div className='form-perfil'>
               <div className='form-section'>
-                <label>Nueva Contraseña</label>
-                <input type='text' value=''></input>
+                <p>Nueva Contraseña</p>
+                <input 
+                  type='password' 
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
               </div>
             </div>
             <div className='form-perfil'>
               <div className='form-section'>
-                <label>Confirmar Contraseña</label>
-                <input type='text' value=''></input>
+                <p>Confirmar Contraseña</p>
+                <input 
+                  type='password' 
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
               </div>
             </div>
-
-            <button className='cambiarc-b'>Cambiar contraseña</button>
+            <button className='cambiarc-b' onClick={handlePasswordChange}>
+              Cambiar contraseña
+            </button>
+            {message && <p className="message">{message}</p>}
           </div>
         );
       default:
@@ -107,7 +163,6 @@ function Perfil() {
 
   return (
     <div className="perfil-container">
-      {/* Sidebar */}
       <div className="perfil-sidebar">
         <ul>
           <li
@@ -130,8 +185,6 @@ function Perfil() {
           </li>
         </ul>
       </div>
-
-      {/* Contenido principal */}
       <div className="perfil-content">
         {renderContent()}
       </div>
@@ -140,5 +193,6 @@ function Perfil() {
 }
 
 export default Perfil;
+
 
 

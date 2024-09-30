@@ -444,6 +444,7 @@ function Navbar() {
                   <h5>Recuperar Contraseña</h5>
                   <form>
                     <div className="form-field">
+                    <div className="input-container">
                       <input type="email" placeholder="Ingresa tu correo" value={email2} onChange={(e) => setEmail2(e.target.value)} required/>
                       <FaMicrophone
                         className="mic-icon"
@@ -452,6 +453,7 @@ function Navbar() {
                         style={{ color: micActivo === 'email2' ? 'red' : 'black' }}
                       />
                     </div>
+                    </div>
                       <button type="submit">Enviar Código</button>
                   </form>
                   <p onClick={goBackToLogin} style={{ cursor: 'pointer', marginTop: '10px' }}>Volver a Iniciar Sesión</p>
@@ -459,7 +461,8 @@ function Navbar() {
               <div>
                 <h5>Iniciar sesión</h5>
                 <form onSubmit={handleLogin}>
-                  <div className="form-field">
+                <div className="form-field">
+                  <div className="input-container">
                     <input
                       type="email"
                       placeholder="Ingresa tu correo"
@@ -470,10 +473,13 @@ function Navbar() {
                       className="mic-icon"
                       onClick={() => iniciarEscuchaParaCampo('email')}
                       size={23}
-                      style={{ color:  micActivo === 'email' ? 'red' : 'black' }}
+                      style={{ color: micActivo === 'email' ? 'red' : 'black' }}
                     />
                   </div>
-                  <div className="form-field">
+                </div>
+
+                <div className="form-field">
+                  <div className="input-container">
                     <input
                       type="password"
                       placeholder="Contraseña"
@@ -487,6 +493,7 @@ function Navbar() {
                       style={{ color: micActivo === 'password' ? 'red' : 'black' }}
                     />
                   </div>
+                </div>
                   <div className="terminos">
                     <input type="checkbox" required /> He leído y acepto los 
                     <a href="/terms">Términos y Condiciones</a>

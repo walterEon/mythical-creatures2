@@ -120,6 +120,10 @@ html, body {
   font-weight: bold;
 }
 
+.form-section p{
+  font-weight: 1000;
+}
+
 .form-section input{
   border-radius: 6px;
   padding: 5px;

@@ -110,5 +110,10 @@ h1 {
     display: none;
 }
 
+.popup-content-p a{
+    text-decoration: none;
+    color: white;
+}
+
 
 

@@ -47,6 +47,25 @@ body {
   color: #4a4848;
 }
 
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container input {
+  width: 100%;
+  padding-right: 40px; /* Añadir espacio para el ícono */
+  box-sizing: border-box; /* Asegura que el padding sea incluido en el ancho total */
+}
+
+.mic-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* Centra verticalmente el ícono */
+  cursor: pointer;
+}
+
 .navbar-search input {
   flex-grow: 1;
   border: none; /* Eliminamos el borde del input */

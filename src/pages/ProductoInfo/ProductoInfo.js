@@ -87,42 +87,41 @@ const productosMitologicos = [
 ];
 
 function ProductoInfo() {
-  const { id } = useParams();  // Obtener el ID del producto desde la URL
-  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false); // Popup de éxito
-
+  const { id } = useParams();
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
-
   const soundPlayerRef = useRef(null);
 
-    const playSound = (soundName) => {
-      if (soundPlayerRef.current) {
-        soundPlayerRef.current.playSound(soundName);
-      }
-    };
+  const playSound = (soundName) => {
+    if (soundPlayerRef.current) {
+      soundPlayerRef.current.playSound(soundName);
+    }
+  };
 
-    const closeSuccessPopup = () => {
-        setIsSuccessPopupOpen(false); // Cierra el popup de éxito
-      };
-  
-  const producto = productosMitologicos.find(p => p.id === parseInt(id));  // Buscar producto por ID
-  
+  const closeSuccessPopup = () => {
+    setIsSuccessPopupOpen(false);
+  };
+
+  const producto = productosMitologicos.find(p => p.id === parseInt(id));
+
   if (!producto) {
     return <div>Producto no encontrado</div>;
   }
 
   const handleAddToCart = () => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const productInCart = cart.find(item => item.id === producto.id);
-      
-        if (productInCart) {
-          productInCart.quantity += 1; // Si ya está en el carrito, solo aumenta la cantidad
-        } else {
-          cart.push({ ...producto, quantity: 1 }); // Si no está, lo agrega con cantidad 1
-        }
-      
-        localStorage.setItem('cart', JSON.stringify(cart));
-        setIsSuccessPopupOpen(true);
-        playSound('successSound');
+    const productInCart = cart.find(item => item.id === producto.id);
+
+    if (productInCart) {
+      productInCart.quantity += quantity; // Add the selected quantity to the existing quantity
+    } else {
+      cart.push({ ...producto, quantity: quantity }); // Add the product with the selected quantity
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    setIsSuccessPopupOpen(true);
+    playSound('successSound');
   };
 
   return (
@@ -132,16 +131,13 @@ function ProductoInfo() {
         <div className='producto-details'>
           <h1>{producto.name}</h1>
           <p>{producto.description}</p>
-          {/* <p>Apto para: {producto.suitableFor}</p> */}
-          {/* <p>Valor nutricional: {producto.nutritionalValue}</p> */}
-          <label>Variante:
-            <select>
-              <option></option>
-              {/* Agregar más variantes si hay */}
-            </select>
-          </label>
           <label>Cantidad: 
-            <input type="number" defaultValue={1} />
+            <input 
+              type="number" 
+              value={quantity} 
+              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))} 
+              min="1"
+            />
           </label>
           <p>Precio: ${producto.price}</p>
           <div className='buttons'>
@@ -173,11 +169,11 @@ function ProductoInfo() {
         {/* Añadir más comentarios aquí */}
       </div>
     </div>
-    {isSuccessPopupOpen && (
+      {isSuccessPopupOpen && (
         <div className="logout-popup">
           <div className="popup-content-p">
             <h2>¡Éxito!</h2>
-            <p>Su producto ha sido añadido al carrito.</p>
+            <p>Se han añadido {quantity} unidad(es) del producto al carrito.</p>
             <button onClick={closeSuccessPopup}>OK</button>
           </div>
         </div>

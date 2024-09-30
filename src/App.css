@@ -112,6 +112,17 @@ body.contrast-high .mic-icon{
 }
 
 
+body.contrast-high .procesando-pedido-container{
+  background-color: black;
+}
+
+body.contrast-high .procesando-pedido-container h1{
+  color: white;
+}
+
+body.contrast-high .procesando-pedido-container p{
+  color: white;
+}
 
 body.contrast-high .producto h2{
    
@@ -177,6 +188,26 @@ body.contrast-high .detalles-pedido h3{
   color: white;
 }
 
+body.contrast-high .popup-content-p{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .popup-content-p h2{
+  color: white;
+}
+
+body.contrast-high .pedido-item{
+  background-color: black;
+  border: 1px solid white
+}
+
+body.contrast-high .form-section input{
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+}
+
 
 body.contrast-high h5{
   
@@ -206,6 +237,11 @@ body.contrast-high .popup-content{
 body.contrast-high h3{
    
   color: black;
+}
+
+body.contrast-high .perfil-content h2{
+   
+  color: white;
 }
 
 /* Bajo contraste */

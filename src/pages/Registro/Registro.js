@@ -13,6 +13,8 @@ function Registro() {
     const [escuchando, setEscuchando] = useState(false);
     const [micActivo, setMicActivo] = useState('');
 
+    const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false); // Popup de éxito
+
     const navigate = useNavigate();
 
     // Configuración de reconocimiento de voz
@@ -78,8 +80,8 @@ function Registro() {
         users.push(newUser);
         localStorage.setItem('users', JSON.stringify(users));
         localStorage.setItem('userSession', JSON.stringify(newUser));
+        setIsSuccessPopupOpen(true);
         
-        navigate('/perfil');
       };
 
     // Replace the existing handleLogin function in Registro.js with this:
@@ -202,6 +204,16 @@ const handleLogin = (e) => {
             <p>Te estamos escuchando...</p>
         </div>
     )}
+
+{isSuccessPopupOpen && (
+        <div className="logout-popup">
+          <div className="popup-content-p">
+            <h2>¡Éxito!</h2>
+            <p>Se ha registrado exitosamente.</p>
+            <button><a href='/'>OK</a></button>
+          </div>
+        </div>
+      )}
 </div>
 
     );
